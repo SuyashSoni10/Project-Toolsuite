@@ -72,7 +72,54 @@
             position: relative;
         }
         .principle-box h2 { margin-top: 0; border-bottom: 3px solid var(--border); display: inline-block; padding-bottom: 5px; }
+.support-box {
+    margin-bottom: 50px;
+}
 
+.support-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 5px;
+}
+
+.cta-box {
+    border: 3px solid var(--border);
+    background: var(--tag-bg);
+    padding: 30px;
+}
+
+.cta-box h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.cta-buttons a {
+    text-decoration: none;
+    color: var(--text);
+    border: 2px solid var(--border);
+    padding: 12px 20px;
+    font-weight: bold;
+    transition: all 0.2s;
+    background: var(--bg);
+}
+
+.cta-buttons a:hover {
+    background: var(--text);
+    color: var(--bg);
+    transform: translate(-3px, -3px);
+    box-shadow: 5px 5px 0px var(--border);
+}
         .workspace {
             display: grid;
             grid-template-columns: 220px 1fr;
@@ -185,7 +232,31 @@ Your work stays yours.</p>
         </ul>
         <p>In development, forever... :)</p>
     </section>
+<section class="support-box">
+    <p class="support-label">SUPPORT TOOLSUITE</p>
 
+    <div class="cta-box">
+        <h3>Like what we're building?</h3>
+
+        <p>
+            Project Toolsuite is built and maintained by people who simply wanted better tools without the usual friction.
+        </p>
+
+        <p>
+            Support the project, contribute a tool, report bugs, or share ToolSuite with someone who might find it useful.
+        </p>
+
+        <div class="cta-buttons">
+            <a href="https://github.com/Winter262005/Project-Toolsuite" target="_blank">
+                STAR ON GITHUB
+            </a>
+
+            <a href="contributors.html">
+                BECOME A CONTRIBUTOR
+            </a>
+        </div>
+    </div>
+</section>
     <div class="workspace">
         <aside>
             <h3>Filter Tags</h3>
