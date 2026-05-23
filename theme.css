@@ -1,0 +1,15 @@
+:root {
+    --bg: #ffffff;
+    --text: #000000;
+    --border: #000000;
+    --card-hover: #000000;
+    --tag-bg: #f0f0f0;
+}
+
+.dark-mode {
+    --bg: #1b1a1a;
+    --text: #f0f0f0;
+    --border: #f0f0f0;
+    --card-hover: #f0f0f0;
+    --tag-bg: #333333;
+}
