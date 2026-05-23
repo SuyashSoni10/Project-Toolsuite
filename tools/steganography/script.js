@@ -183,15 +183,22 @@ decodeBtn.addEventListener('click', async () => {
 
 function hideData(text) {
 
-    const binary = stringToBinary(text);
+    const bytes = new TextEncoder().encode(text);
 
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const imageData = ctx.getImageData(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
 
     const data = imageData.data;
 
+    const totalBits = bytes.length * 8;
+
     const capacity = Math.floor(data.length * 0.75);
 
-    if (binary.length > capacity) {
+    if (totalBits > capacity) {
         throw new Error("Text too long for this image size.");
     }
 
@@ -199,20 +206,24 @@ function hideData(text) {
 
     for (let i = 0; i < data.length; i += 4) {
 
-        if (bitIndex >= binary.length) break;
-
-        // RGB only
         for (let j = 0; j < 3; j++) {
 
-            if (bitIndex < binary.length) {
+            if (bitIndex >= totalBits) break;
 
-                data[i + j] =
-                    (data[i + j] & 254) |
-                    parseInt(binary[bitIndex]);
+            const byteIndex = Math.floor(bitIndex / 8);
 
-                bitIndex++;
-            }
+            const bitPosition = 7 - (bitIndex % 8);
+
+            const bit =
+                (bytes[byteIndex] >> bitPosition) & 1;
+
+            data[i + j] =
+                (data[i + j] & 254) | bit;
+
+            bitIndex++;
         }
+
+        if (bitIndex >= totalBits) break;
     }
 
     ctx.putImageData(imageData, 0, 0);
@@ -231,34 +242,66 @@ function revealData() {
 
     const bytes = [];
 
-    let binaryByte = "";
+    let currentByte = 0;
+
+    let bitCount = 0;
+
+    const markerBytes =
+        new TextEncoder().encode(END_MARKER);
 
     for (let i = 0; i < data.length; i += 4) {
 
         for (let j = 0; j < 3; j++) {
 
-            binaryByte += (data[i + j] & 1).toString();
+            const bit = data[i + j] & 1;
 
-            // Every 8 bits = 1 byte
-            if (binaryByte.length === 8) {
+            currentByte = (currentByte << 1) | bit;
 
-                bytes.push(parseInt(binaryByte, 2));
+            bitCount++;
 
-                binaryByte = "";
+            if (bitCount === 8) {
 
-                // Decode progressively
-                const extractedText =
-                    new TextDecoder().decode(
-                        new Uint8Array(bytes)
-                    );
+                bytes.push(currentByte);
 
-                // Stop immediately once marker found
-                if (extractedText.endsWith(END_MARKER)) {
+                currentByte = 0;
 
-                    return extractedText.slice(
-                        0,
-                        -END_MARKER.length
-                    );
+                bitCount = 0;
+
+                // Check marker
+                if (bytes.length >= markerBytes.length) {
+
+                    let found = true;
+
+                    for (
+                        let k = 0;
+                        k < markerBytes.length;
+                        k++
+                    ) {
+
+                        if (
+                            bytes[
+                                bytes.length -
+                                markerBytes.length +
+                                k
+                            ] !== markerBytes[k]
+                        ) {
+                            found = false;
+                            break;
+                        }
+                    }
+
+                    if (found) {
+
+                        const finalBytes =
+                            bytes.slice(
+                                0,
+                                -markerBytes.length
+                            );
+
+                        return new TextDecoder().decode(
+                            new Uint8Array(finalBytes)
+                        );
+                    }
                 }
             }
         }
