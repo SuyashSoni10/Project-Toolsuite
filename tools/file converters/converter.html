@@ -1,601 +1,301 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>File Converter - Project Toolsuite</title>
-
-    <meta
-      name="description"
-      content="Convert files between different formats quickly and securely."
-    />
-
-    <meta
-      property="og:title"
-      content="File Converter - Project Toolsuite"
-    />
-
-    <meta
-      property="og:description"
-      content="Convert files between different formats quickly and securely."
-    />
-
-    <meta
-      property="og:image"
-      content="https://cdn-icons-png.flaticon.com/512/3522/3522262.png"
-    />
-
-    <meta property="og:type" content="website" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <meta
-      name="twitter:title"
-      content="File Converter - Project Toolsuite"
-    />
-
-    <meta
-      name="twitter:description"
-      content="Convert files between different formats quickly and securely."
-    />
-
-    <meta
-      name="twitter:image"
-      content="https://cdn-icons-png.flaticon.com/512/3522/3522262.png"
-    />
-
-    <link
-      rel="stylesheet"
-      href="../../assets/css/notifications.css"
-    />
-
-    <script
-      src="../../assets/js/notifications.js"
-      defer
-    ></script>
-
-    <style>
-      body {
-        font-family: "Courier New", Courier, monospace;
-        background-color: #ffffff;
-        color: #000000;
-        line-height: 1.7;
-        max-width: 900px;
-        margin: 32px auto;
-        padding: 20px;
-      }
-
-      header {
-        border-bottom: 4px solid #000;
-        margin-bottom: 32px;
-        padding-bottom: 12px;
-      }
-
-      h1 {
-        font-size: 2.2rem;
-        text-transform: uppercase;
-        margin: 0;
-        letter-spacing: 1px;
-      }
-
-      h2 {
-        font-size: 1rem;
-        text-transform: uppercase;
-        background-color: #000;
-        color: #fff;
-        display: inline-block;
-        padding: 4px 10px;
-        margin: 0 0 16px 0;
-        letter-spacing: 0.5px;
-      }
-
-      section {
-        margin-bottom: 48px;
-        padding-top: 10px;
-      }
-
-      label {
-        display: block;
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: 0.85rem;
-        margin-bottom: 6px;
-      }
-
-      input[type="file"],
-      input[type="text"],
-      textarea,
-      select {
-        display: block;
-        font-family: inherit;
-        border: 2px solid #000;
-        padding: 12px;
-        width: 100%;
-        box-sizing: border-box;
-        margin-bottom: 18px;
-        background: #fff;
-        color: #000;
-        transition:
-          border-color 0.2s,
-          background-color 0.2s;
-      }
-
-      input[type="file"]:hover,
-      input[type="text"]:hover,
-      textarea:hover,
-      select:hover {
-        background-color: #f5f5f5;
-      }
-
-      input[type="file"]:focus,
-      input[type="text"]:focus,
-      textarea:focus,
-      select:focus {
-        outline: none;
-        border-color: #555;
-      }
-
-      textarea {
-        resize: vertical;
-      }
-
-      button {
-        font-family: inherit;
-        background-color: #ffffff;
-        color: #000000;
-        border: 2px solid #000;
-        padding: 12px 24px;
-        text-transform: uppercase;
-        font-weight: bold;
-        cursor: pointer;
-        transition:
-          background-color 0.15s,
-          color 0.15s,
-          transform 0.1s;
-      }
-
-      button:hover {
-        background-color: #000;
-        color: #fff;
-      }
-
-      button:active {
-        transform: scale(0.97);
-      }
-
-      hr {
-        border: none;
-        border-top: 1px solid #000;
-        margin: 24px 0;
-      }
-
-      #status {
-        margin-top: 20px;
-        padding: 12px 16px;
-        border: 1px dashed #000;
-        display: inline-block;
-        min-width: 220px;
-        font-size: 0.9rem;
-      }
-
-      a {
-        color: #000;
-        text-decoration: none;
-        border-bottom: 1px dotted #000;
-        padding-bottom: 1px;
-        transition:
-          background-color 0.15s,
-          color 0.15s;
-      }
-
-      a:hover {
-        background-color: #000;
-        color: #fff;
-      }
-
-      footer {
-        margin-top: 64px;
-        font-size: 0.85rem;
-        opacity: 0.85;
-      }
-
-      .format-selector {
-        margin-bottom: 20px;
-      }
-
-      .grid {
-        display: grid;
-        gap: 20px;
-      }
-
-      @media (max-width: 600px) {
-        body {
-          margin: 16px;
-          padding: 16px;
-        }
-
-        h1 {
-          font-size: 1.8rem;
-        }
-
-        button {
-          width: 100%;
-          text-align: center;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <header>
-      <h1>File Extension Converter</h1>
-
-      <p>
-        Convert file formats locally in your browser.
-        No uploads, no limits.
-      </p>
-    </header>
-
-    <main class="grid">
-
-      <!-- IMAGE CONVERTER -->
-      <section>
-        <h2>1. Image Converter</h2>
-
-        <p>
-          Convert between JPG, PNG, and WebP.
-        </p>
-
-        <input
-          type="file"
-          id="imageInput"
-          accept="image/*"
-        />
-
-        <div class="format-selector">
-          <label for="imageFormat">
-            Target Format:
-          </label>
-
-          <select id="imageFormat">
-            <option value="image/jpeg">JPG</option>
-            <option value="image/png">PNG</option>
-            <option value="image/webp">WEBP</option>
-          </select>
-        </div>
-
-        <button id="convertImageBtn">
-          Convert & Download
-        </button>
-      </section>
-
-      <hr />
-
-      <!-- JSON TO CSV -->
-      <section>
-        <h2>2. JSON → CSV</h2>
-
-        <p>
-          Convert JSON files into spreadsheet format.
-        </p>
-
-        <input
-          type="file"
-          id="jsonInput"
-          accept=".json"
-        />
-
-        <button id="convertJsonBtn">
-          Convert & Download CSV
-        </button>
-      </section>
-
-      <hr />
-
-      <!-- CSV TO JSON -->
-      <section>
-        <h2>3. CSV → JSON</h2>
-
-        <p>
-          Convert CSV spreadsheets into JSON.
-        </p>
-
-        <input
-          type="file"
-          id="csvInput"
-          accept=".csv"
-        />
-
-        <button id="convertCsvBtn">
-          Convert & Download JSON
-        </button>
-      </section>
-
-      <hr />
-
-      <!-- TXT TO JSON -->
-      <section>
-        <h2>4. TXT → JSON</h2>
-
-        <p>
-          Convert text files into JSON objects.
-        </p>
-
-        <input
-          type="file"
-          id="txtInput"
-          accept=".txt"
-        />
-
-        <button id="convertTxtBtn">
-          Convert TXT
-        </button>
-      </section>
-
-      <hr />
-
-      <!-- MARKDOWN -->
-      <section>
-        <h2>5. Markdown → HTML</h2>
-
-        <p>
-          Convert Markdown documents into HTML.
-        </p>
-
-        <input
-          type="file"
-          id="markdownInput"
-          accept=".md"
-        />
-
-        <button id="convertMarkdownBtn">
-          Convert Markdown
-        </button>
-      </section>
-
-      <hr />
-
-      <!-- BASE64 -->
-      <section>
-        <h2>6. Base64 Encoder</h2>
-
-        <p>
-          Encode files into Base64 strings.
-        </p>
-
-        <input
-          type="file"
-          id="base64EncodeInput"
-        />
-
-        <button id="encodeBase64Btn">
-          Encode File
-        </button>
-
-        <hr />
-
-        <h2>7. Base64 Decoder</h2>
-
-        <p>
-          Decode Base64 back into downloadable files.
-        </p>
-
-        <textarea
-          id="base64Text"
-          rows="7"
-          placeholder="Paste Base64 text here..."
-        ></textarea>
-
-        <label for="base64Extension">
-          Output File Extension
-        </label>
-
-        <input
-          type="text"
-          id="base64Extension"
-          placeholder="png / txt / pdf / mp3"
-        />
-
-        <button id="decodeBase64Btn">
-          Decode & Download
-        </button>
-      </section>
-
-      <hr />
-
-      <!-- AUDIO -->
-      <section>
-        <h2>8. Audio → WAV</h2>
-
-        <p>
-          Convert audio files into WAV format.
-        </p>
-
-        <input
-          type="file"
-          id="audioInput"
-          accept="audio/*"
-        />
-
-        <button id="convertAudioBtn">
-          Convert Audio
-        </button>
-      </section>
-
-      <hr />
-
-      <!-- TEXT CASE -->
-      <section>
-        <h2>9. Text Case Converter</h2>
-
-        <p>
-          Convert text between uppercase and lowercase.
-        </p>
-
-        <textarea
-          id="caseInput"
-          rows="6"
-          placeholder="Enter text..."
-        ></textarea>
-
-        <button id="uppercaseBtn">
-          UPPERCASE
-        </button>
-
-        <button id="lowercaseBtn">
-          lowercase
-        </button>
-
-        <button id="downloadCaseBtn">
-          Download TXT
-        </button>
-      </section>
-
-      <hr />
-
-      <!-- URL ENCODER -->
-      <section>
-        <h2>10. URL Encoder / Decoder</h2>
-
-        <p>
-          Encode or decode URLs safely.
-        </p>
-
-        <textarea
-          id="urlInput"
-          rows="5"
-          placeholder="Enter URL..."
-        ></textarea>
-
-        <button id="encodeUrlBtn">
-          Encode URL
-        </button>
-
-        <button id="decodeUrlBtn">
-          Decode URL
-        </button>
-      </section>
-
-      <hr />
-
-      <!-- HTML ESCAPER -->
-      <section>
-        <h2>11. HTML Escape Converter</h2>
-
-        <p>
-          Escape or unescape HTML entities.
-        </p>
-
-        <textarea
-          id="htmlInput"
-          rows="5"
-          placeholder="Enter HTML..."
-        ></textarea>
-
-        <button id="escapeHtmlBtn">
-          Escape HTML
-        </button>
-
-        <button id="unescapeHtmlBtn">
-          Unescape HTML
-        </button>
-      </section>
-
-      <hr />
-
-      <!-- NUMBER CONVERTER -->
-      <section>
-        <h2>12. Number Base Converter</h2>
-
-        <p>
-          Convert Decimal numbers into Binary and Hexadecimal.
-        </p>
-
-        <input
-          type="text"
-          id="numberInput"
-          placeholder="Enter decimal number"
-        />
-
-        <button id="convertNumberBtn">
-          Convert Number
-        </button>
-
-        <textarea
-          id="numberOutput"
-          rows="4"
-          readonly
-        ></textarea>
-      </section>
-
-      <hr />
-
-      <!-- JSON FORMATTER -->
-      <section>
-        <h2>13. JSON Formatter</h2>
-
-        <p>
-          Beautify and validate JSON instantly.
-        </p>
-
-        <textarea
-          id="jsonFormatterInput"
-          rows="8"
-          placeholder='{"hello":"world"}'
-        ></textarea>
-
-        <button id="formatJsonBtn">
-          Format JSON
-        </button>
-      </section>
-
-      <hr />
-
-      <!-- HASH GENERATOR -->
-      <section>
-        <h2>14. SHA-256 Hash Generator</h2>
-
-        <p>
-          Generate SHA-256 hashes from text.
-        </p>
-
-        <textarea
-          id="hashInput"
-          rows="5"
-          placeholder="Enter text..."
-        ></textarea>
-
-        <button id="generateHashBtn">
-          Generate Hash
-        </button>
-
-        <textarea
-          id="hashOutput"
-          rows="4"
-          readonly
-        ></textarea>
-      </section>
-
-      <hr />
-
-      <!-- STATUS -->
-      <p id="status">
-        System Ready: Awaiting input...
-      </p>
-
-    </main>
-
-    <footer>
-      <hr />
-
-      <p>
-        <a href="https://project-toolsuite.vercel.app">
-          ← Back to Home
-        </a>
-      </p>
-    </footer>
-
-    <script src="converter-logic.js"></script>
-  </body>
-</html>
+<!-- IMAGE CONVERTER -->
+<section>
+  <h2>1. Image Converter</h2>
+
+  <p>
+    Convert images between multiple formats locally.
+  </p>
+
+  <input
+    type="file"
+    id="imageInput"
+    accept="image/*"
+  />
+
+  <div class="format-selector">
+    <label for="imageFormat">
+      Target Format:
+    </label>
+
+    <select id="imageFormat">
+      <option value="image/png">PNG</option>
+      <option value="image/jpeg">JPG</option>
+      <option value="image/webp">WEBP</option>
+      <option value="image/bmp">BMP</option>
+      <option value="image/gif">GIF</option>
+      <option value="image/tiff">TIFF</option>
+      <option value="image/x-icon">ICO</option>
+    </select>
+  </div>
+
+  <button id="convertImageBtn">
+    Convert & Download
+  </button>
+</section>
+
+<hr />
+
+<!-- DOCUMENT CONVERTER -->
+<section>
+  <h2>2. Document Converter</h2>
+
+  <p>
+    Convert text-based documents into different formats.
+  </p>
+
+  <input
+    type="file"
+    id="documentInput"
+    accept=".txt,.json,.csv,.md"
+  />
+
+  <div class="format-selector">
+    <label for="documentFormat">
+      Target Format:
+    </label>
+
+    <select id="documentFormat">
+      <option value="txt">TXT</option>
+      <option value="json">JSON</option>
+      <option value="csv">CSV</option>
+      <option value="html">HTML</option>
+      <option value="md">MARKDOWN</option>
+    </select>
+  </div>
+
+  <button id="convertDocumentBtn">
+    Convert & Download
+  </button>
+</section>
+
+<hr />
+
+<!-- AUDIO CONVERTER -->
+<section>
+  <h2>3. Audio Converter</h2>
+
+  <p>
+    Convert audio files into multiple formats.
+  </p>
+
+  <input
+    type="file"
+    id="audioInput"
+    accept="audio/*"
+  />
+
+  <div class="format-selector">
+    <label for="audioFormat">
+      Target Format:
+    </label>
+
+    <select id="audioFormat">
+      <option value="wav">WAV</option>
+      <option value="mp3">MP3</option>
+      <option value="ogg">OGG</option>
+      <option value="aac">AAC</option>
+    </select>
+  </div>
+
+  <button id="convertAudioBtn">
+    Convert & Download
+  </button>
+</section>
+
+<hr />
+
+<!-- BASE64 CONVERTER -->
+<section>
+  <h2>4. Base64 Converter</h2>
+
+  <p>
+    Encode files into Base64 or decode Base64 into files.
+  </p>
+
+  <input
+    type="file"
+    id="base64FileInput"
+  />
+
+  <button id="encodeBase64Btn">
+    Encode File
+  </button>
+
+  <hr />
+
+  <textarea
+    id="base64Text"
+    rows="7"
+    placeholder="Paste Base64 text here..."
+  ></textarea>
+
+  <label for="base64Extension">
+    Output File Extension
+  </label>
+
+  <input
+    type="text"
+    id="base64Extension"
+    placeholder="png / pdf / txt / mp3"
+  />
+
+  <button id="decodeBase64Btn">
+    Decode & Download
+  </button>
+</section>
+
+<hr />
+
+<!-- TEXT CONVERTER -->
+<section>
+  <h2>5. Text Converter</h2>
+
+  <p>
+    Transform text into multiple useful formats.
+  </p>
+
+  <textarea
+    id="textInput"
+    rows="8"
+    placeholder="Enter text..."
+  ></textarea>
+
+  <div class="format-selector">
+    <label for="textFormat">
+      Conversion Type:
+    </label>
+
+    <select id="textFormat">
+      <option value="uppercase">
+        UPPERCASE
+      </option>
+
+      <option value="lowercase">
+        lowercase
+      </option>
+
+      <option value="capitalize">
+        Capitalize
+      </option>
+
+      <option value="reverse">
+        Reverse Text
+      </option>
+
+      <option value="binary">
+        Text → Binary
+      </option>
+
+      <option value="base64">
+        Text → Base64
+      </option>
+
+      <option value="urlencode">
+        URL Encode
+      </option>
+
+      <option value="urldecode">
+        URL Decode
+      </option>
+
+      <option value="htmlescape">
+        HTML Escape
+      </option>
+    </select>
+  </div>
+
+  <button id="convertTextBtn">
+    Convert Text
+  </button>
+</section>
+
+<hr />
+
+<!-- NUMBER CONVERTER -->
+<section>
+  <h2>6. Number Converter</h2>
+
+  <p>
+    Convert numbers between multiple bases.
+  </p>
+
+  <input
+    type="text"
+    id="numberInput"
+    placeholder="Enter decimal number"
+  />
+
+  <div class="format-selector">
+    <label for="numberFormat">
+      Convert To:
+    </label>
+
+    <select id="numberFormat">
+      <option value="binary">
+        Binary
+      </option>
+
+      <option value="hex">
+        Hexadecimal
+      </option>
+
+      <option value="octal">
+        Octal
+      </option>
+
+      <option value="roman">
+        Roman Numerals
+      </option>
+    </select>
+  </div>
+
+  <button id="convertNumberBtn">
+    Convert Number
+  </button>
+
+  <textarea
+    id="numberOutput"
+    rows="4"
+    readonly
+  ></textarea>
+</section>
+
+<hr />
+
+<!-- HASH GENERATOR -->
+<section>
+  <h2>7. Hash Generator</h2>
+
+  <p>
+    Generate secure hashes from text.
+  </p>
+
+  <textarea
+    id="hashInput"
+    rows="6"
+    placeholder="Enter text..."
+  ></textarea>
+
+  <div class="format-selector">
+    <label for="hashFormat">
+      Hash Type:
+    </label>
+
+    <select id="hashFormat">
+      <option value="SHA-1">SHA-1</option>
+      <option value="SHA-256">SHA-256</option>
+      <option value="SHA-384">SHA-384</option>
+      <option value="SHA-512">SHA-512</option>
+    </select>
+  </div>
+
+  <button id="generateHashBtn">
+    Generate Hash
+  </button>
+
+  <textarea
+    id="hashOutput"
+    rows="5"
+    readonly
+  ></textarea>
+</section>
