@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validator - Project Toolsuite</title>
+    <meta name="description" content="Offline-first email address validator. Check syntax, typos, disposable domains, and role-based addresses.">
+    <link rel="stylesheet" href="../../assets/css/notifications.css">
+    <script src="../../assets/js/notifications.js" defer></script>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --border: #000000;
+            --error: #ff4d4d;
+            --warn: #fbbf24;
+            --success: #22c55e;
+            --tag-bg: #f0f0f0;
+        }
+
+        body.dark-mode {
+            --bg: #1b1a1a;
+            --text: #f0f0f0;
+            --border: #f0f0f0;
+            --tag-bg: #333333;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            margin: 0;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            border-bottom: 5px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        h1 { font-size: 2.2rem; text-transform: uppercase; margin: 0 0 10px; }
+        
+        .dark-mode-toggle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--text);
+            color: var(--bg);
+            border: 2px solid var(--border);
+            padding: 8px 16px;
+            font-family: inherit;
+            font-weight: 900;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 4px 4px 0px var(--border);
+            transition: transform 0.1s;
+        }
+        
+        .dark-mode-toggle:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--border); }
+
+        .input-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"] {
+            flex-grow: 1;
+            padding: 15px;
+            font-family: inherit;
+            font-size: 1.1rem;
+            border: 3px solid var(--border);
+            background: transparent;
+            color: inherit;
+            box-sizing: border-box;
+            min-width: 250px;
+        }
+
+        button.action-btn {
+            padding: 15px 30px;
+            font-family: inherit;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background: var(--text);
+            color: var(--bg);
+            border: 3px solid var(--border);
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 4px 4px 0px var(--border);
+            transition: transform 0.1s;
+        }
+        
+        button.action-btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--border); }
+
+        .results-card {
+            border: 3px solid var(--border);
+            padding: 25px;
+            background: var(--tag-bg);
+            display: none;
+        }
+
+        .results-card.visible {
+            display: block;
+        }
+
+        .result-header {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .status-badge {
+            padding: 5px 15px;
+            border: 2px solid var(--border);
+            font-size: 1rem;
+        }
+        
+        .status-valid { background: var(--success); color: #000; }
+        .status-warn { background: var(--warn); color: #000; }
+        .status-invalid { background: var(--error); color: #000; }
+
+        .check-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 2px solid var(--border);
+            background: var(--bg);
+        }
+
+        .check-icon {
+            font-size: 1.2rem;
+            margin-right: 15px;
+            width: 25px;
+            text-align: center;
+        }
+
+        .check-content strong {
+            display: block;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        
+        .check-content span {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .typo-suggestion {
+            display: inline-block;
+            background: var(--text);
+            color: var(--bg);
+            padding: 2px 8px;
+            margin-top: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Email Validator</h1>
+        <p>Offline-first analysis for syntax, typos, disposable domains, and role-based addresses.</p>
+        <button id="themeBtn" class="dark-mode-toggle" onclick="toggleTheme()">DARK MODE</button>
+    </header>
+
+    <div class="input-group">
+        <input type="text" id="emailInput" placeholder="ENTER EMAIL ADDRESS (e.g. hello@example.com)..." onkeypress="handleEnter(event)">
+        <button class="action-btn" onclick="validateEmail()">ANALYZE</button>
+    </div>
+
+    <div class="results-card" id="resultsCard">
+        <div class="result-header">
+            <span>Analysis Result</span>
+            <span class="status-badge" id="overallStatus">PENDING</span>
+        </div>
+        
+        <ul class="check-list">
+            <li class="check-item">
+                <div class="check-icon" id="syntaxIcon">⏳</div>
+                <div class="check-content">
+                    <strong>Syntax & Format</strong>
+                    <span id="syntaxMsg">Checking format...</span>
+                </div>
+            </li>
+            <li class="check-item">
+                <div class="check-icon" id="typoIcon">⏳</div>
+                <div class="check-content">
+                    <strong>Domain Typo</strong>
+                    <span id="typoMsg">Checking for common typos...</span>
+                    <div id="typoAction" style="display:none;"></div>
+                </div>
+            </li>
+            <li class="check-item">
+                <div class="check-icon" id="dispIcon">⏳</div>
+                <div class="check-content">
+                    <strong>Disposable Domain</strong>
+                    <span id="dispMsg">Checking against throwaway list...</span>
+                </div>
+            </li>
+            <li class="check-item">
+                <div class="check-icon" id="roleIcon">⏳</div>
+                <div class="check-content">
+                    <strong>Role-based Address</strong>
+                    <span id="roleMsg">Checking if generic inbox...</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script src="email-validator.js"></script>
+    <script>
+        // Theme initialization
+        function updateThemeButton() {
+            const btn = document.getElementById('themeBtn');
+            if (!btn) return;
+            btn.textContent = document.body.classList.contains('dark-mode') ? 'LIGHT MODE' : 'DARK MODE';
+        }
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+            updateThemeButton();
+        }
+
+        function toggleTheme() {
+            const isDark = document.body.classList.contains('dark-mode');
+            const newTheme = isDark ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            applyTheme(newTheme);
+        }
+
+        applyTheme(localStorage.getItem('theme') || 'light');
+        
+        function handleEnter(e) {
+            if (e.key === 'Enter') {
+                validateEmail();
+            }
+        }
+    </script>
+</body>
+</html>
