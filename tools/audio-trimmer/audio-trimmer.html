@@ -10,6 +10,7 @@
     <script src="../../assets/js/notifications.js" defer></script>
     
     <style>
+
         :root {
             --bg-color: var(--bg);
             --card-bg: var(--tag-bg);
@@ -190,7 +191,23 @@
             margin-top: 10px;
             display: none;
         }
+         .backtohome{
+            height:20vh;
+            width:100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+         }
+        .back-home{
+            color: black;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: underline dotted black;
+}
 
+    
     </style>
 </head>
 <body>
@@ -224,6 +241,9 @@
             <button id="btn-preview" class="secondary">▶ Preview Trim</button>
             <button id="btn-download">💾 Download Trimmed WAV</button>
         </div>
+    </div>
+    <div class="backtohome">
+        <a href="../../index.html" class="back-home">← Back to Home</a>
     </div>
 
     <script src="audio-logic.js"></script>
