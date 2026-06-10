@@ -237,11 +237,21 @@
           transition: all 0.2s;
           background: var(--bg);
        }
-      .tool-link small {
-        display: block;
-        font-size: 0.8rem;
-        opacity: 0.7;
-       }
+      .tool-tags {
+        margin-top: 6px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+     }
+
+     .tag {
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      opacity: 0.8;
+      white-space: nowrap;
+     }
 
       #toolSearch::placeholder {
         opacity: 0.6;
@@ -1009,8 +1019,8 @@
 
     if (filtered.length === 0) {
      container.innerHTML = `
-     <p style="grid-column: 1/-1; opacity: 0.5;">
-      No tools found matching your criteria.
+      <p style="grid-column: 1/-1; opacity: 0.5;">
+        No tools found matching your criteria.
       </p>`;
   return;
 }
@@ -1020,11 +1030,13 @@ container.innerHTML = filtered
     (t) => `
       <a href="${t.path}" class="tool-link">
         <div>${t.name}</div>
-        <small>${t.tags.join(", ")}</small>
+        <div class="tool-tags">
+          ${t.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}
+        </div>
       </a>
     `,
   )
-    .join("");
+  .join("");
   }
 
       document.getElementById("toolSearch").oninput = renderTools;
