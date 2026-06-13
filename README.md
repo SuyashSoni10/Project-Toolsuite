@@ -152,17 +152,17 @@ See the `LICENSE` file for complete details.
 
 | Rank | Contributor | Points | Commits |
 |-----:|------------|-------:|--------:|
-| 1 | @Winter262005 | 239 | 239 |
+| 1 | @Winter262005 | 243 | 243 |
 | 2 | @VITianYash42 | 20 | 20 |
 | 3 | @rach-kanc | 14 | 14 |
 | 4 | @Dru-429 | 13 | 13 |
 | 5 | @AdityaMittal08 | 9 | 9 |
 | 6 | @Ishwarpatra | 9 | 9 |
-| 7 | @aditijha509 | 6 | 6 |
-| 8 | @JaiHarsan | 5 | 5 |
-| 9 | @ShrutiiShinde05 | 5 | 5 |
-| 10 | @ritiktyagiai | 5 | 5 |
-| 11 | @love25-codes | 4 | 4 |
+| 7 | @ritiktyagiai | 7 | 7 |
+| 8 | @aditijha509 | 6 | 6 |
+| 9 | @love25-codes | 6 | 6 |
+| 10 | @JaiHarsan | 5 | 5 |
+| 11 | @ShrutiiShinde05 | 5 | 5 |
 | 12 | @SamXop123 | 4 | 4 |
 | 13 | @KaustAbhinand | 3 | 3 |
 | 14 | @Pranavkale11 | 3 | 3 |
