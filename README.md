@@ -158,7 +158,7 @@ See the `LICENSE` file for complete details.
 
 | Rank | Contributor | Points | Commits |
 |-----:|------------|-------:|--------:|
-| 1 | @Winter262005 | 249 | 249 |
+| 1 | @Winter262005 | 250 | 250 |
 | 2 | @VITianYash42 | 20 | 20 |
 | 3 | @rach-kanc | 14 | 14 |
 | 4 | @Dru-429 | 13 | 13 |
