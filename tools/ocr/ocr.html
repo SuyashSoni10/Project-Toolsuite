@@ -33,9 +33,9 @@
     --space-lg: 32px;
     --space-xl: 48px;
 
-    --color-text: #000;
-    --color-muted: #666;
-    --color-bg: #fff;
+    --color-text: var(--text);
+    --color-muted: var(--muted);
+    --color-bg: var(--bg);
     --color-border: var(--border);
 }
 
@@ -144,7 +144,7 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
-    background: #000;
+    background: var(--text);
 }
 
 progress::-moz-progress-bar {
@@ -167,7 +167,7 @@ button {
 
 button:hover {
     background-color: var(--text);
-    color: #fff;
+    color: var(--bg);
     transform: translateY(-2px);
 }
 
@@ -200,7 +200,7 @@ a {
 
 a:hover {
     background-color: var(--text);
-    color: #fff;
+    color: var(--bg);
 }
 
 input[type="text"] {
@@ -214,6 +214,7 @@ input[type="text"] {
     background: var(--bg);
     color: var(--text);
 }
+fix/theme-consistency-200
 
 input[type="file"]:hover,
 input[type="text"]:hover {
@@ -253,7 +254,6 @@ footer {
         min-height: 220px;
     }
 }
-
 
     </style>
     <link rel="stylesheet" href="../../theme.css">
