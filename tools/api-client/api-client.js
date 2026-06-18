@@ -153,10 +153,11 @@ async function sendRequest() {
     const startTime = performance.now();
 
     const controller = new AbortController();
+
     const timeoutDuration = 15000; // 15 seconds timeout
 
     const timeoutId = setTimeout(() => {
-        controller.abort();
+      controller.abort();
     }, timeoutDuration);
 
     try {
@@ -211,12 +212,14 @@ async function sendRequest() {
             displayResponseStatus(408, "Request Timeout");
 
             displayResponseBody(
-                `Request timed out after ${timeoutDuration / 1000} seconds.\n\n` +
-                `The server did not respond within the allowed time.\n\n` +
-                `Possible causes:\n` +
-                `1. Endpoint is taking too long to respond.\n` +
-                `2. Server may be unavailable.\n` +
-                `3. Network connection issue.`
+            `Request timed out after ${timeoutDuration / 1000} seconds.
+            
+             The server did not respond within the allowed time.
+
+             Possible causes:
+             1. Endpoint is taking too long to respond.
+             2. Server may be unavailable.
+             3. Network connection issue.`
             );
 
             if (typeof notify !== 'undefined') {
@@ -230,13 +233,14 @@ async function sendRequest() {
             displayResponseStatus(0, "Network Error / CORS Blocked");
 
             displayResponseBody(
-                `Request Failed!\n\n` +
-                `Error message: ${err.message}\n\n` +
-                `Common Causes:\n` +
-                `1. CORS restrictions.\n` +
-                `2. Network offline.\n` +
-                `3. Invalid endpoint URL.\n` +
-                `4. DNS lookup failure.`
+            `Request Failed!
+             Error message: ${err.message}
+             Common Causes:
+             1. CORS policy blocked this request. Ensure the API server allows your browser origin using proper Access-Control-Allow-Origin headers.
+             2. Mixed Content restriction. Browsers block HTTP requests from HTTPS pages. Make sure both frontend and API use compatible protocols.
+             3. Network connection issue. Check your internet connection or verify that the target server is reachable.
+             4. Invalid endpoint URL. Confirm the URL path, protocol, and API route are correct.
+             5. DNS lookup failure. The domain name may not resolve or the server may be unavailable.`
             );
         }
 
@@ -331,6 +335,20 @@ function copyResponse() {
 function clearConsole() {
     document.getElementById("urlInput").value = "";
     document.getElementById("reqBody").value = "";
+
+    // Reset custom headers
+    const headersContainer = document.getElementById("headersContainer");
+
+    if (headersContainer) {
+        headersContainer.innerHTML = "";
+
+        // Restore default Content-Type header
+        addHeaderRow("Content-Type", "application/json");
+    }
+
     resetResponseConsole();
-    if (typeof notify !== 'undefined') notify.info("Inputs and console cleared");
+
+    if (typeof notify !== 'undefined') {
+        notify.info("Inputs, headers and console cleared");
+    }
 }
