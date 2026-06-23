@@ -1,10 +1,5 @@
 /* IP Subnet Calculator Specific Styles */
 
-:root {
-    --subnet-color: #22c55e;
-    --host-color: #3b82f6;
-    --card-bg: var(--bg);
-}
 
 body {
     font-family: 'Courier New', Courier, monospace;
@@ -202,6 +197,16 @@ input[type="number"]:focus {
 
     font-family: inherit;
     font-size: 1.1rem;
+    font-weight: bold;
+    background: var(--text);
+    color: var(--bg);
+    border: 3px solid var(--border);
+    font-weight: 700;
+    text-transform: uppercase;
+    background: var(--bg);
+    color: var(--text);
+    border: 2px solid var(--border);
+    cursor: pointer;
     font-weight: 700;
     text-transform: uppercase;
 
