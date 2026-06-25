@@ -69,9 +69,12 @@
                                 <button class="control-btn" onclick="app.resetView()">⟲</button>
                             </div>
                             <div class="legend">
-                                <div class="legend-item"><div class="legend-color" style="background:#00ff00"></div>HEAD</div>
-                                <div class="legend-item"><div class="legend-color" style="background:#0099ff"></div>Branch</div>
-                                <div class="legend-item"><div class="legend-color" style="background:#fff"></div>Commit</div>
+                                <div class="legend">
+                                    <div class="legend-item"><div class="legend-color" style="background:var(--diff-add-text)"></div>HEAD</div>
+                                    <div class="legend-item"><div class="legend-color" style="background:var(--card-hover)"></div>Branch</div>
+                                    <div class="legend-item"><div class="legend-color" style="background:var(--text)"></div>Commit</div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -104,8 +107,8 @@
                         </div>
                     </div>
 
-                    <div id="diff-view" class="view-section" style="background:#000; z-index:50;">
-                        <div style="padding:20px; border-bottom:1px solid #fff; display:flex; justify-content:space-between;">
+                    <div id="diff-view" class="view-section" style="background:var(--text); z-index:50;">
+                        <div style="padding:20px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between;">
                             <h2>COMMIT DIFF</h2>
                             <button class="btn" onclick="app.closeDiff()">CLOSE X</button>
                         </div>

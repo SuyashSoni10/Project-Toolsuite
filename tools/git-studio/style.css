@@ -17,7 +17,7 @@
         .tool-list { list-style: none; overflow-y: auto; flex: 1; }
         .tool-item { padding: 16px 20px; border-bottom: 3px solid var(--border); cursor: pointer; background: var(--tag-bg); color: var(--text); font-weight: bold; transition: 0.1s; display: flex; align-items: center; }
         .tool-item:hover { background: var(--bg); padding-left: 24px; }
-        .tool-item.active {background: #000;color: #fff;}
+        .tool-item.active {background: var(--text); color: var(--bg);}
         .tool-item.active::before { content: '►'; margin-right: 10px; }
 
         /* Main Content */
@@ -50,7 +50,7 @@
             cursor: pointer;
             z-index: 10;
         }
-        .upload-zone:hover { border-color: #00ff00; background: var(--bg); }
+        .upload-zone:hover { border-color: var(--card-hover); background: var(--bg); }
         canvas { display: block;  background: var(--bg); cursor: grab; }
         canvas:active { cursor: grabbing; }
 
@@ -68,7 +68,7 @@
         .panel-header { background: var(--tag-bg);color: var(--text); padding: 15px; font-weight: bold; border-bottom: 4px solid var(--border); }
         .panel-content { padding: 20px; }
         .commit-info-item { margin-bottom: 15px; }
-        .commit-info-label { font-size: 11px; font-weight: bold; margin-bottom: 4px; color: #555; }
+        .commit-info-label { font-size: 11px; font-weight: bold; margin-bottom: 4px; color: var(--muted); }
         .commit-info-value { border: 2px solid var(--border); padding: 8px; background: var(--bg); font-size: 13px; word-break: break-all; }
 
         /* Lists (Branches, Files, History) */
@@ -84,11 +84,11 @@
 
         /* Diff View */
         .diff-view-content { padding: 20px; color: var(--text); }
-        .diff-file { border: 2px solid #fff; margin-bottom: 20px; background: #111; }
+        .diff-file { border: 2px solid var(--border); margin-bottom: 20px; background: var(--surface); }
         .diff-header { background: var(--bg); color: var(--text); padding: 10px; font-weight: bold; }
         .diff-lines { padding: 10px; font-size: 12px; line-height: 1.4; }
-        .diff-add { color: #00ff00; background: rgba(0, 255, 0, 0.1); display: block; }
-        .diff-remove { color: #ff0000; background: rgba(255, 0, 0, 0.1); display: block; }
+        .diff-add { color: var(--diff-add-text); background: var(--diff-add-bg); display: block; }
+        .diff-remove { color: var(--diff-remove); background:var(--diff-del-bg); display: block; }
         .diff-context { color: var(--muted); display: block; }
         .dark-mode-toggle {
             padding: 10px 16px;
@@ -108,7 +108,7 @@
         }
         /* Footer */
         .footer {  background: var(--tag-bg);border-top: 4px solid var(--border);color: var(--text);padding: 10px 30px;  font-size: 12px; }
-        .tooltip { position: absolute; background: #000; color: #fff; border: 2px solid #fff; padding: 5px 10px; font-size: 12px; pointer-events: none; display: none; z-index: 1000; }
+        .tooltip { position: absolute; background: var(--text); color: var(--bg); border: 2px solid var(--border); padding: 5px 10px; font-size: 12px; pointer-events: none; display: none; z-index: 1000; }
 
         .tool-footer {
             padding: 12px 30px;

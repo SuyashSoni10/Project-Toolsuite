@@ -31,14 +31,14 @@
 <div class="main-layout">
     <div id="pdf-workbench"><div id="pages-container"></div></div>
     <div class="sidebar">
-        <button class="action-btn" style="background:#fff; color:#000;" onclick="document.getElementById('pdfInput').click()">1. Load PDF</button>
+        <button onclick="clearPad()" style="width:100%; background:none; border:1px solid var(--border); color:var(--text); cursor:pointer; margin-top:5px;"></button>
         <input type="file" id="pdfInput" accept="application/pdf" style="display:none">
         <label>2. Draw Signature</label>
         <canvas id="scribble-pad"></canvas>
-        <button onclick="clearPad()" style="width:100%; background:none; border:1px solid #000; cursor:pointer; margin-top:5px;">Clear</button>
-        <hr style="border:1px solid #000; margin: 20px 0;">
+        <button onclick="clearPad()" style="width:100%; background:none; border:1px solid var(--border); color:var(--text); cursor:pointer; margin-top:5px;">Clear</button>
+        <hr style="border:1px solid var(--border); margin: 20px 0;">
         <label>3. Color</label>
-        <input type="color" id="sigColor" value="#000000" style="width:100%; height:40px; border:2px solid #000; margin-bottom:10px;">
+        <input type="color" id="sigColor" value="#000000" style="width:100%; height:40px; border:2px solid var(--border); margin-bottom:10px;">
         <button id="exportBtn" class="action-btn" disabled>4. Export PDF</button>
     </div>
 </div>

@@ -83,9 +83,9 @@ header {
 .nav-btn {
   background: transparent;
 
-  color: #00ff88;
+  color: var(--card-hover);
 
-  border: 2px solid #00ff88;
+  border: 2px solid var(--card-hover);
 
   padding: 10px 18px;
 
@@ -103,13 +103,13 @@ header {
 }
 
 .nav-btn:hover {
-  background: #00ff88;
+  background: var(--card-hover);
 
-  color: #000;
+  color: var(--bg);
 
   transform: translateY(-2px);
 
-  box-shadow: 0 0 15px #00ff88;
+  box-shadow: 0 0 15px rgba(96, 165, 250, 0.4);
 }
 
 /* TITLE */
@@ -117,7 +117,7 @@ header {
 .header-left h1 {
   margin: 0;
 
-  color: #00ff88;
+  color: var(--card-hover);
 
   font-size: 1.3rem;
 
@@ -144,7 +144,7 @@ header {
   background: var(--surface);
   color: var(--text);
 
-  border: 2px solid #00ff88;
+  border: 2px solid var(--card-hover);
 
   padding: 10px 22px;
 
@@ -162,13 +162,13 @@ header {
 }
 
 .action-btn:hover {
-  background: #00ff88;
+  background: var(--card-hover);
 
-  color: #000;
+  color: var(--bg);
 
   transform: translateY(-2px);
 
-  box-shadow: 0 0 20px #00ff88;
+  box-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
 }
 
 .action-btn:active {
@@ -210,7 +210,7 @@ header {
 }
 
 h1 {
-  color: #00ff88;
+  color: var(--card-hover);
 
   letter-spacing: 2px;
 
@@ -218,7 +218,7 @@ h1 {
 }
 
 .nav-btn {
-  color: #00ff88;
+  color: var(--card-hover);
 }
 
 /* ================= MAIN ================= */
@@ -246,7 +246,7 @@ main {
 
   background: var(--surface-2);
 
-  box-shadow: 0 0 30px #00ff8820;
+  box-shadow: var(--shadow);
 
   border-radius: 18px;
 }
@@ -254,7 +254,7 @@ main {
 .hero h2 {
   font-size: 2.5rem;
 
-  color: #00ff88;
+  color: var(--card-hover);
 
   margin-bottom: 15px;
 }
@@ -280,7 +280,7 @@ main {
 
   animation: rotateGlobe 12s linear infinite;
 
-  filter: drop-shadow(0 0 20px #00ff88);
+  filter: drop-shadow(0 0 20px var(--card-hover));
 }
 
 @keyframes rotateGlobe {
@@ -319,15 +319,15 @@ main {
 }
 
 .tab:hover {
-  border-color: #00ff88;
+  border-color: var(--card-hover);
 }
 
 .tab.active {
-  background: #00ff88;
+  background: var(--card-hover);
 
-  color: black;
+  color: var(--bg);
 
-  border-color: #00ff88;
+  border-color: var(--card-hover);
 }
 
 /* ================= SECTIONS ================= */
@@ -357,7 +357,7 @@ main {
 }
 
 .section-title h3 {
-  color: #00ff88;
+  color: var(--card-hover);
 
   font-size: 1.6rem;
 }
@@ -385,7 +385,7 @@ main {
 .search-box:focus {
   outline: none;
 
-  border-color: #00ff88;
+  border-color: var(--card-hover);
 }
 
 /* ================= CLOCK CARDS ================= */
@@ -413,13 +413,13 @@ main {
 .clock-card:hover {
   transform: translateY(-8px);
 
-  border-color: #00ff88;
+  border-color: var(--card-hover);
 
-  box-shadow: 0 0 25px #00ff8840;
+  box-shadow: 0 0 25px rgba(96, 165, 250, 0.4);
 }
 
 .clock-card h4 {
-  color: #00ff88;
+  color: var(--card-hover);
 }
 
 .clock-time {
@@ -445,7 +445,7 @@ label {
 
   margin-bottom: 8px;
 
-  color: #00ff88;
+  color: var(--card-hover);
 }
 
 input,
@@ -457,7 +457,9 @@ select {
   padding: 14px;
 
   background: var(--surface);
+
   color: var(--text);
+
   border: 2px solid var(--border);
 
   border-radius: 8px;
@@ -470,16 +472,16 @@ select {
 }
 
 select:hover {
-  border-color: #00ff88;
+  border-color: var(--card-hover);
 }
 
 select:focus,
 input:focus {
   outline: none;
 
-  border-color: #00ff88;
+  border-color: var(--card-hover);
 
-  box-shadow: 0 0 12px #00ff8840;
+  box-shadow: 0 0 12px rgba(96, 165, 250, 0.25);
 }
 
 /* dropdown options */
@@ -493,7 +495,7 @@ select option {
 
 input:focus,
 select:focus {
-  border-color: #00ff88;
+  border-color: var(--card-hover);
 
   outline: none;
 }
@@ -511,7 +513,7 @@ select:focus {
 
   min-height: 30px;
 
-  color: #00ff88;
+  color: var(--card-hover);
 
   border-radius: 10px;
 }
@@ -540,9 +542,9 @@ select:focus {
 }
 
 .dev-grid button:hover {
-  border-color: #00ff88;
+  border-color: var(--card-hover);
 
-  color: #00ff88;
+  color: var(--card-hover);
 }
 
 /* ================= RESPONSIVE ================= */
@@ -584,7 +586,7 @@ select:focus {
 .input-group label {
   font-size: 0.8rem;
 
-  color: #00ff88;
+  color: var(--card-hover);
 
   text-transform: uppercase;
 }
@@ -610,9 +612,9 @@ select option {
 .convert-btn {
   margin-top: 25px;
 
-  background: #00ff88;
+  background: var(--card-hover);
 
-  color: black;
+  color: var(--bg);
 
   border: none;
 
@@ -636,7 +638,7 @@ select option {
 
   background: var(--surface);
 
-  border-left: 4px solid #00ff88;
+  border-left: 4px solid var(--card-hover);
 
   font-size: 1.1rem;
 }
@@ -662,7 +664,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 input[type="date"]:hover {
-  box-shadow: 0 0 10px #00ff88;
+  box-shadow: 0 0 10px var(--card-hover);
 }
 
 footer {
