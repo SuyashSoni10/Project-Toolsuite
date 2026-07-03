@@ -166,6 +166,35 @@ The Health Checker helps contributors quickly identify broken registrations, mis
 
 ---
 
+## Developer Documentation
+
+Project Toolsuite includes shared utility scripts that are reused across multiple tools and pages.
+
+### Shared Utilities
+
+- `theme.js` – Handles theme initialization, theme switching, and recent tool tracking.
+- `assets/js/notifications.js` – Provides toast-style notification functionality for success, error, and informational messages.
+
+### Documentation
+
+See the shared utilities documentation:
+
+```text
+docs/shared-utilities.md
+```
+
+The documentation includes:
+
+- Public API references
+- Function descriptions
+- Parameter and return value documentation
+- Theme initialization behavior
+- Notification methods
+- Recommended script placement
+- Common integration examples
+
+---
+
 ## Contributing
 
 Contributions are welcome, whether you're fixing bugs, improving documentation, or building new tools.
