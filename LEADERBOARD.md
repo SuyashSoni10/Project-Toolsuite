@@ -2,13 +2,13 @@
 
 | Rank | Contributor | Points | Commits |
 |-----:|------------|-------:|--------:|
-| 1 | @Winter262005 | 292 | 292 |
+| 1 | @Winter262005 | 299 | 299 |
 | 2 | @love25-codes | 26 | 26 |
 | 3 | @VITianYash42 | 20 | 20 |
 | 4 | @rach-kanc | 16 | 16 |
 | 5 | @Ishwarpatra | 13 | 13 |
-| 6 | @Dru-429 | 13 | 13 |
-| 7 | @Sargam-Ghagre | 11 | 11 |
+| 6 | @Sargam-Ghagre | 13 | 13 |
+| 7 | @Dru-429 | 13 | 13 |
 | 8 | @AdityaMittal08 | 9 | 9 |
 | 9 | @adikulkarni006 | 8 | 8 |
 | 10 | @ritiktyagiai | 8 | 8 |
@@ -38,8 +38,9 @@
 | 34 | @PulkitSachdev25 | 1 | 1 |
 | 35 | @MEHWISH310 | 1 | 1 |
 | 36 | @Laasya2007 | 1 | 1 |
-| 37 | @CharlapallyDivyani | 1 | 1 |
-| 38 | @anshul-lh44 | 1 | 1 |
-| 39 | @androidvitb | 1 | 1 |
+| 37 | @Gunjan10-droid | 1 | 1 |
+| 38 | @CharlapallyDivyani | 1 | 1 |
+| 39 | @anshul-lh44 | 1 | 1 |
+| 40 | @androidvitb | 1 | 1 |
 
-_Last updated: Tue, 30 Jun 2026 03:57:18 GMT_
+_Last updated: Sun, 05 Jul 2026 03:45:01 GMT_

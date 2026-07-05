@@ -121,6 +121,80 @@ The script automatically:
 
 ---
 
+## Tool Health Checker
+
+The Tool Health Checker is a client-side maintenance utility designed to validate registered tools and identify common project issues.
+
+### Checks Performed
+
+- Validates registered tool page paths from the project registry
+- Detects missing or unreachable tool pages
+- Verifies `theme.css` inclusion
+- Verifies `theme.js` inclusion
+- Generates a downloadable JSON report
+- Provides a human-readable scan summary
+
+### Usage
+
+1. Open **Tool Health Checker** from the homepage.
+2. Click **Run Health Scan**.
+3. Review the scan summary and results table.
+4. Download the JSON report for maintenance or debugging purposes.
+
+### Example Summary
+
+```text
+Tools Scanned: 56
+Pages Missing: 0
+Missing Theme CSS: 0
+Missing Theme JS: 0
+```
+
+### JSON Report Example
+
+```json
+{
+  "tool": "JSON Formatter",
+  "path": "tools/json-formatter/json-formatter.html",
+  "pageStatus": "PASS",
+  "cssStatus": "PASS",
+  "jsStatus": "PASS"
+}
+```
+
+The Health Checker helps contributors quickly identify broken registrations, missing theme integrations, and configuration regressions without requiring additional build tools or CI setup.
+
+---
+
+## Developer Documentation
+
+Project Toolsuite includes shared utility scripts that are reused across multiple tools and pages.
+
+### Shared Utilities
+
+- `theme.js` – Handles theme initialization, theme switching, and recent tool tracking.
+- `assets/js/notifications.js` – Provides toast-style notification functionality for success, error, and informational messages.
+
+### Documentation
+
+See the shared utilities documentation:
+
+```text
+docs/shared-utilities.md
+```
+
+The documentation includes:
+
+- Public API references
+- Function descriptions
+- Parameter and return value documentation
+- Theme initialization behavior
+- Notification methods
+- Recommended script placement
+- Common integration examples
+
+---
+
 ## Contributing
 
 Contributions are welcome, whether you're fixing bugs, improving documentation, or building new tools.
@@ -176,13 +250,13 @@ See the `LICENSE` file for complete details.
 
 | Rank | Contributor | Points | Commits |
 |-----:|------------|-------:|--------:|
-| 1 | @Winter262005 | 292 | 292 |
+| 1 | @Winter262005 | 299 | 299 |
 | 2 | @love25-codes | 26 | 26 |
 | 3 | @VITianYash42 | 20 | 20 |
 | 4 | @rach-kanc | 16 | 16 |
 | 5 | @Ishwarpatra | 13 | 13 |
-| 6 | @Dru-429 | 13 | 13 |
-| 7 | @Sargam-Ghagre | 11 | 11 |
+| 6 | @Sargam-Ghagre | 13 | 13 |
+| 7 | @Dru-429 | 13 | 13 |
 | 8 | @AdityaMittal08 | 9 | 9 |
 | 9 | @adikulkarni006 | 8 | 8 |
 | 10 | @ritiktyagiai | 8 | 8 |
@@ -212,9 +286,10 @@ See the `LICENSE` file for complete details.
 | 34 | @PulkitSachdev25 | 1 | 1 |
 | 35 | @MEHWISH310 | 1 | 1 |
 | 36 | @Laasya2007 | 1 | 1 |
-| 37 | @CharlapallyDivyani | 1 | 1 |
-| 38 | @anshul-lh44 | 1 | 1 |
-| 39 | @androidvitb | 1 | 1 |
+| 37 | @Gunjan10-droid | 1 | 1 |
+| 38 | @CharlapallyDivyani | 1 | 1 |
+| 39 | @anshul-lh44 | 1 | 1 |
+| 40 | @androidvitb | 1 | 1 |
 
 <!-- LEADERBOARD_END -->
 
