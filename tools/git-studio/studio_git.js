@@ -75,11 +75,11 @@ window.app = {
 
     setupDragDrop: function() {
         const zone = document.getElementById('upload-zone');
-        zone.addEventListener('dragover', (e) => { e.preventDefault(); zone.style.borderColor = '#00ff00'; });
-        zone.addEventListener('dragleave', (e) => { zone.style.borderColor = '#fff'; });
+        zone.addEventListener('dragover', (e) => { e.preventDefault(); zone.style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--card-hover'); });
+        zone.addEventListener('dragleave', (e) => { zone.style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--border'); });
         zone.addEventListener('drop', async (e) => {
             e.preventDefault();
-            zone.style.borderColor = '#fff';
+            zone.style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--border');
             
             const items = Array.from(e.dataTransfer.items);
             const files = [];
@@ -196,7 +196,7 @@ window.app = {
             parents: c.commit.parent,
             x: 50, // Calculated below
             y: (i * 60) + 50,
-            color: (i === 0) ? '#00ff00' : '#fff'
+            color: (i === 0) ? getComputedStyle(document.documentElement).getPropertyValue('--diff-add-text') : getComputedStyle(document.documentElement).getPropertyValue('--text')
         }));
 
         // Simple Layout (Linear for now, can be expanded to tree)
@@ -210,7 +210,7 @@ window.app = {
         const height = this.canvas.height;
 
         // Clear
-        ctx.fillStyle = '#1a1a1a';
+        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--surface');
         ctx.fillRect(0, 0, width, height);
 
         ctx.save();
@@ -218,7 +218,7 @@ window.app = {
         ctx.scale(this.scale, this.scale);
 
         // Draw Connections
-        ctx.strokeStyle = '#666';
+        ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--border');
         ctx.lineWidth = 2;
         this.commitGraph.forEach((node, i) => {
             node.parents.forEach(parentOid => {
@@ -241,11 +241,11 @@ window.app = {
             ctx.fill();
 
             // Text
-            ctx.fillStyle = '#fff';
+            ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--text');
             ctx.font = '12px Courier New';
             ctx.fillText(node.message.split('\n')[0].substring(0, 30), node.x + 20, node.y + 5);
             
-            ctx.fillStyle = '#666';
+            ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--muted');
             ctx.font = '10px Courier New';
             ctx.fillText(node.oid.substring(0, 7), node.x + 20, node.y + 18);
         });
@@ -443,7 +443,7 @@ window.app = {
 
     setStatus: function(msg, type) {
         document.getElementById('status-bar').innerText = msg;
-        document.getElementById('status-bar').style.color = type === 'error' ? '#ff0000' : '#00ff00';
+        document.getElementById('status-bar').style.color = type === 'error' ? getComputedStyle(document.documentElement).getPropertyValue('--diff-del-text') : getComputedStyle(document.documentElement).getPropertyValue('--diff-add-text');
     }
 };
 

@@ -1,10 +1,24 @@
-const CACHE_NAME = 'toolsuite-v2-core'; // Version bumped to V2 to force update
-const DYNAMIC_CACHE = 'toolsuite-v2-dynamic';
+const CACHE_VERSION = 'v4';
+
+const CACHE_NAME = `toolsuite-${CACHE_VERSION}-core`;
+const DYNAMIC_CACHE = `toolsuite-${CACHE_VERSION}-dynamic`;
 
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
-    './manifest.json'
+    './offline.html',
+    './manifest.json',
+    // Shared styles
+    './theme.css',
+    './assets/css/notifications.css',
+
+    // Shared scripts
+    './theme.js',
+    './assets/js/notifications.js',
+
+    // PWA assets
+    './robots.txt',
+    './sitemap.xml'
 ];
 
 self.addEventListener('install', (event) => {
@@ -38,6 +52,14 @@ self.addEventListener('fetch', (event) => {
     if (event.request.method !== 'GET') return;
 
     const url = new URL(event.request.url);
+
+    if (event.request.mode === 'navigate') {
+        event.respondWith(
+            fetch(event.request)
+                .catch(() => caches.match('./offline.html'))
+        );
+        return;
+    }
 
     // For the main page, we want the LATEST tool list, not the cached one.
     if (url.pathname === '/' || url.pathname.endsWith('index.html')) {

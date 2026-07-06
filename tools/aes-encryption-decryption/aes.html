@@ -213,13 +213,13 @@
         }
 
         .alert-warning {
-            border-left: 6px solid #d9534f;
-            background-color: rgba(217, 83, 79, 0.05);
+            border-left: 6px solid var(--border);
+            background-color: var(--surface);
         }
 
         .alert-info {
-            border-left: 6px solid #5bc0de;
-            background-color: rgba(91, 192, 222, 0.05);
+            border-left: 6px solid var(--border);
+            background-color: var(--surface);
         }
 
         .alert-title {
@@ -255,7 +255,7 @@
         .edu-card {
             border: 1px dashed var(--border);
             padding: 16px;
-            background-color: rgba(128, 128, 128, 0.02);
+            background: var(--surface);
         }
 
         .edu-card h3 {
@@ -267,32 +267,7 @@
         }
 
         /* Footer */
-        hr {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 40px 0 20px;
-        }
-
-        footer {
-            font-size: 0.9rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        a {
-            color: var(--text);
-            text-decoration: none;
-            border-bottom: 1px dotted var(--border);
-            padding-bottom: 2px;
-        }
-
-        a:hover {
-            background-color: var(--text);
-            color: var(--bg);
-        }
+        
 
         #status {
             font-size: 0.85rem;
@@ -327,6 +302,29 @@
             .btn-group {
                 flex-direction: column;
             }
+        }
+
+        /*Footer*/
+      footer {
+            margin-top: 60px;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px 12px 0 0;
+        }
+
+        footer a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 900;
+            border: 2px solid var(--border);
+            padding: 8px 16px;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+
+        footer a:hover {
+            background: var(--text);
+            color: var(--bg);
         }
     </style>
 </head>
@@ -507,9 +505,7 @@
     </main>
 
     <footer>
-        <hr>
-        <p><a href="../../index.html">← Back to Home</a></p>
-        <p style="margin: 0; font-size: 0.8rem; opacity: 0.6;">Local Client-Side Cryptography — No Data Shared</p>
+        <a href="../../index.html">&larr; Back to Home</a>
     </footer>
 
     <script src="aes.js"></script>

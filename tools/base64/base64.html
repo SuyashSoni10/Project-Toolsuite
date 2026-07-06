@@ -71,10 +71,11 @@
         border: 2px solid var(--border);
         font-family: inherit;
         font-size: 1rem;
-        background: var(--bg);
         resize: vertical;
         min-height: 150px;
         transition: background-color 0.2s, border-color 0.2s;
+        background: var(--surface);
+        color: var(--text);
     }
 
     textarea:focus {
@@ -92,7 +93,7 @@
 
     button {
         font-family: inherit;
-        background-color: var(--bg);
+        background-color: var(--surface);
         color: var(--text);
         border: 2px solid var(--border);
         padding: 12px 20px;
@@ -105,7 +106,9 @@
     button:hover {
         background-color: var(--text);
         color: var(--bg);
+        box-shadow: 0 6px 14px var(--shadow);
     }
+
 
     button:active {
         transform: translateY(1px);
@@ -122,21 +125,28 @@
         margin: 40px 0 20px;
     }
 
-    footer {
-        font-size: 0.9rem;
-    }
+    /*Footer*/
+      footer {
+            margin-top: 60px;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px 12px 0 0;
+        }
 
-    a {
-        color: var(--text);
-        text-decoration: none;
-        border-bottom: 1px dotted var(--border);
-        padding-bottom: 2px;
-    }
+        footer a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 900;
+            border: 2px solid var(--border);
+            padding: 8px 16px;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
 
-    a:hover {
-        background-color: var(--text);
-        color: var(--bg);
-    }
+        footer a:hover {
+            background: var(--text);
+            color: var(--bg);
+        }
 
     /* Responsive */
     @media (max-width: 600px) {
@@ -179,14 +189,19 @@
 
             <label>OUTPUT</label>
             <textarea id="output" readonly placeholder="Result will appear here..."></textarea>
+            <div class="btn-group">
+    <button id="exportTxtBtn">Export TXT</button>
+    <button id="exportJsonBtn">Export JSON</button>
+    <button id="exportPdfBtn">Export PDF</button>
+</div>
         </section>
     </main>
 
     <footer>
-        <hr>
-        <p><a href="../../index.html">← Back to Home</a></p>
+        <a href="../../index.html">← Back to Home</a>
     </footer>
 
-    <script src="base64-logic.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="base64-logic.js"></script>
 </body>
 </html>

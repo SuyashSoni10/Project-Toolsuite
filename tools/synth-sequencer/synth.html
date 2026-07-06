@@ -12,7 +12,6 @@
     <meta name="twitter:title" content="Synth Sequencer - Project Toolsuite" />
     <meta name="twitter:description" content="Create and experiment with audio sequences using an interactive browser-based synthesizer." />
     <link rel="stylesheet" href="../../theme.css">
-    <script src="../../theme.js"></script>
     <style>
 
         :root {
@@ -84,6 +83,11 @@
             transition: 0.2s;
         }
 
+        #themeBtn{
+            border-radius: 0px;
+            top:5px;
+        }
+
         #btn-play { background-color: var(--success, #4caf50); color: white; }
         #btn-stop { background-color: #f44336; color: white; }
         #btn-clear { background-color: var(--label-muted); color: white; }
@@ -148,13 +152,34 @@
             margin-top: 30px;
             border: 2px solid var(--border);
         }
-    
+        /*Footer*/
+      footer {
+            margin-top: 60px;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px 12px 0 0;
+        }
+
+        footer a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 900;
+            border: 2px solid var(--border);
+            padding: 8px 16px;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+
+        footer a:hover {
+            background: var(--text);
+            color: var(--bg);
+        }
     </style>
 </head>
 <body>
 
     <header class="page-header">
-        <button class="dark-mode-toggle" onclick="toggleTheme()" id="themeBtn">DARK MODE</button>
+         <button class="dark-mode-toggle" onclick="toggleTheme()" id="themeBtn">DARK MODE</button>
         <h1>WASM Synthesizer</h1>
     </header>
     
@@ -193,5 +218,6 @@
     </footer>
 
     <script src="synth-logic.js"></script>
+    <script src="../../theme.js"></script>
 </body>
 </html>

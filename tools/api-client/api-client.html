@@ -17,17 +17,22 @@
     
     <link rel="stylesheet" href="../../assets/css/notifications.css">
     <script src="../../assets/js/notifications.js" defer></script>
-    <script src="../../theme.js"></script>
 </head>
 <body>
 
-    <header>
+   <header>
+    <div style="flex-direction: column; display: flex; gap: 10px;">
         <div style="display: flex; align-items: center;">
             <h1>Postman Lite // HTTP Client</h1>
         </div>
-        <p>A client-side REST API requester. Test endpoints, custom headers, and inspect formatted responses.</p>
-        <button id="themeBtn" class="dark-mode-toggle" onclick="toggleTheme()">DARK MODE</button>
-    </header>
+    </div>
+
+    <p>
+        A client-side REST API requester. Test endpoints, custom headers, and inspect formatted responses.
+    </p>
+
+    <button class="dark-mode-toggle" onclick="toggleTheme()" id="themeBtn">DARK MODE</button>
+</header>
 
     <main>
         <!-- CORS Policy Alert Notice -->
@@ -124,11 +129,10 @@
             </div>
         </div>
     </main>
-
     <footer>
-        <p><a href="../../index.html">← Back to Home</a></p>
+        <a href="../../index.html">&larr; Back to Home</a>
     </footer>
-
+     <script src="../../theme.js"></script>
     <script src="api-client.js"></script>
 </body>
 </html>

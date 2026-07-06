@@ -143,15 +143,25 @@
 
         footer {
             margin-top: 60px;
-            font-size: 0.9rem;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px 12px 0 0;
         }
 
-        hr {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 40px 0;
+        footer a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 900;
+            border: 2px solid var(--border);
+            padding: 8px 16px;
+            display: inline-block;
+            transition: all 0.2s ease;
         }
-    
+
+        footer a:hover {
+            background: var(--text);
+            color: var(--bg);
+        }
     </style>
 </head>
 <body>
@@ -159,9 +169,7 @@
     <header>
         <h1>Bulk Watermarker</h1>
         <p>Protect your images locally. Batch process with multiple layouts.</p>
-    
         <button class="dark-mode-toggle" onclick="toggleTheme()" id="themeBtn">DARK MODE</button></header>
-
     <main>
         <section>
             <div class="drop-zone" id="imageDropZone">
@@ -217,8 +225,7 @@
     </main>
 
     <footer>
-        <hr>
-        <p><a href="../../index.html" style="color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--border);">← Back to Home</a></p>
+        <a href="../../index.html">&larr; Back to Home</a>
     </footer>
 
     <script src="bulkwatermarkerlogic.js"></script>

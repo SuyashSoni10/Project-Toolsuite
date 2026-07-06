@@ -11,7 +11,12 @@ const initGlassStudio = () => {
     const opacityIn = document.getElementById('opacityInput');
     const colorIn = document.getElementById('colorInput');
     const outlineIn = document.getElementById('outlineInput');
-    const shadowIn = document.getElementById('shadowInput');
+    const sLayersIn = document.getElementById('sLayersInput');
+    const sXIn = document.getElementById('sXInput');
+    const sYIn = document.getElementById('sYInput');
+    const sBlurIn = document.getElementById('sBlurInput');
+    const sSpreadIn = document.getElementById('sSpreadInput');
+    const sAlphaIn = document.getElementById('sAlphaInput');
     const noiseIn = document.getElementById('noiseInput');
     const envIn = document.getElementById('envInput');
     const codeOut = document.getElementById('codeOutput');
@@ -34,8 +39,30 @@ const initGlassStudio = () => {
         document.getElementById('v-blur').innerText = blurIn.value + 'px';
         document.getElementById('v-opacity').innerText = opacityIn.value;
         document.getElementById('v-outline').innerText = outlineIn.value;
-        document.getElementById('v-shadow').innerText = shadowIn.value + 'px';
+        document.getElementById('v-s-layers').innerText = sLayersIn.value;
+        document.getElementById('v-s-x').innerText = sXIn.value + 'px';
+        document.getElementById('v-s-y').innerText = sYIn.value + 'px';
+        document.getElementById('v-s-blur').innerText = sBlurIn.value + 'px';
+        document.getElementById('v-s-spread').innerText = sSpreadIn.value + 'px';
+        document.getElementById('v-s-alpha').innerText = sAlphaIn.value;
         document.getElementById('v-noise').innerText = noiseIn.value;
+
+        // Generate Smooth Shadow
+        let shadowString = '';
+        const layers = parseInt(sLayersIn.value);
+        for(let i = 1; i <= layers; i++) {
+            const p = i / layers;
+            const ease = Math.pow(p, 2);
+            
+            const curX = (sXIn.value * ease).toFixed(1) + 'px';
+            const curY = (sYIn.value * ease).toFixed(1) + 'px';
+            const curBlur = (sBlurIn.value * ease).toFixed(1) + 'px';
+            const curSpread = (sSpreadIn.value * ease).toFixed(1) + 'px';
+            const curAlpha = (sAlphaIn.value * (1.1 - p)).toFixed(3);
+            
+            shadowString += `${curX} ${curY} ${curBlur} ${curSpread} rgba(0,0,0,${curAlpha})`;
+            if (i < layers) shadowString += ', ';
+        }
 
         // Set CSS Variables on root
         const root = document.documentElement;
@@ -43,7 +70,7 @@ const initGlassStudio = () => {
         root.style.setProperty('--opacity', opacityIn.value);
         root.style.setProperty('--tint', rgb);
         root.style.setProperty('--outline', outlineIn.value);
-        root.style.setProperty('--elevation', shadowIn.value + 'px');
+        root.style.setProperty('--box-shadow-val', shadowString);
         root.style.setProperty('--noise', noiseIn.value);
 
         // Update Code Box
@@ -51,11 +78,11 @@ const initGlassStudio = () => {
 backdrop-filter: blur(${blurIn.value}px);
 -webkit-backdrop-filter: blur(${blurIn.value}px);
 border: 1px solid rgba(255, 255, 255, ${outlineIn.value});
-box-shadow: 0 10px ${shadowIn.value}px 0 rgba(0, 0, 0, 0.25);`;
+box-shadow: ${shadowString};`;
     };
 
     // Listeners
-    [blurIn, opacityIn, colorIn, outlineIn, shadowIn, noiseIn].forEach(el => {
+    [blurIn, opacityIn, colorIn, outlineIn, sLayersIn, sXIn, sYIn, sBlurIn, sSpreadIn, sAlphaIn, noiseIn].forEach(el => {
         el.addEventListener('input', update);
     });
 

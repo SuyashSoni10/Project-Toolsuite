@@ -35,11 +35,11 @@
         }
 
         h2 {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             text-transform: uppercase;
             border-bottom: 2px solid var(--border);
             display: inline-block;
-            margin-top: 64px;
+            margin-top: 20px;
             margin-bottom: 24px;
             padding-bottom: 4px;
         }
@@ -51,12 +51,14 @@
         p {
             max-width: 720px;
             margin-bottom: 18px;
+            font-size: 1.1rem;
+            line-height: 1.9;
         }
 
         .contributors-list {
             list-style: none;
             padding: 0;
-            margin-top: 32px;
+            margin-top: 30px;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 18px;
@@ -66,16 +68,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-
-            padding: 18px 20px;
-
+            padding: 22px 24px;
             border: 2px solid var(--border);
             border-radius: 12px;
-
             background: var(--surface);
-
             box-shadow: 0 4px 12px var(--shadow);
-
             transition:
                 transform 0.25s ease,
                 background-color 0.25s ease,
@@ -92,8 +89,8 @@
         }
 
         .contributor-name {
-            font-weight: bold;
-            font-size: 0.95rem;
+           font-weight: bold;
+            font-size: 1.15rem;
         }
 
         a {
@@ -101,6 +98,7 @@
             text-decoration: none;
             border-bottom: 1px dotted var(--border);
             padding: 2px 4px;
+            font-size: 1.05rem;
             transition: background-color 0.25s, color 0.25s;
         }
         .return-tools-wrapper {
@@ -152,6 +150,19 @@
             .contributors-list {
                 grid-template-columns: 1fr;
             }
+
+            .contributor-name {
+                font-size: 1.05rem;
+            }
+
+            p,
+            a {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.35rem;
+            }
         }
     </style>
 </head>
@@ -174,6 +185,10 @@
                     <a href="https://github.com/Winter262005" class="contributor-link" target="_blank">@Winter262005</a>
                 </li>
                 <li>
+                    <span class="contributor-name">love25-codes</span>
+                    <a href="https://github.com/love25-codes" class="contributor-link" target="_blank">@love25-codes</a>
+                </li>
+                <li>
                     <span class="contributor-name">VITianYash42</span>
                     <a href="https://github.com/VITianYash42" class="contributor-link" target="_blank">@VITianYash42</a>
                 </li>
@@ -182,20 +197,20 @@
                     <a href="https://github.com/rach-kanc" class="contributor-link" target="_blank">@rach-kanc</a>
                 </li>
                 <li>
-                    <span class="contributor-name">Dru-429</span>
-                    <a href="https://github.com/Dru-429" class="contributor-link" target="_blank">@Dru-429</a>
-                </li>
-                <li>
-                    <span class="contributor-name">AdityaMittal08</span>
-                    <a href="https://github.com/AdityaMittal08" class="contributor-link" target="_blank">@AdityaMittal08</a>
+                    <span class="contributor-name">Sargam-Ghagre</span>
+                    <a href="https://github.com/Sargam-Ghagre" class="contributor-link" target="_blank">@Sargam-Ghagre</a>
                 </li>
                 <li>
                     <span class="contributor-name">Ishwarpatra</span>
                     <a href="https://github.com/Ishwarpatra" class="contributor-link" target="_blank">@Ishwarpatra</a>
                 </li>
                 <li>
-                    <span class="contributor-name">love25-codes</span>
-                    <a href="https://github.com/love25-codes" class="contributor-link" target="_blank">@love25-codes</a>
+                    <span class="contributor-name">Dru-429</span>
+                    <a href="https://github.com/Dru-429" class="contributor-link" target="_blank">@Dru-429</a>
+                </li>
+                <li>
+                    <span class="contributor-name">AdityaMittal08</span>
+                    <a href="https://github.com/AdityaMittal08" class="contributor-link" target="_blank">@AdityaMittal08</a>
                 </li>
                 <li>
                     <span class="contributor-name">adikulkarni006</span>
@@ -210,12 +225,12 @@
                     <a href="https://github.com/aditijha509" class="contributor-link" target="_blank">@aditijha509</a>
                 </li>
                 <li>
-                    <span class="contributor-name">JaiHarsan</span>
-                    <a href="https://github.com/JaiHarsan" class="contributor-link" target="_blank">@JaiHarsan</a>
-                </li>
-                <li>
                     <span class="contributor-name">ShrutiiShinde05</span>
                     <a href="https://github.com/ShrutiiShinde05" class="contributor-link" target="_blank">@ShrutiiShinde05</a>
+                </li>
+                <li>
+                    <span class="contributor-name">JaiHarsan</span>
+                    <a href="https://github.com/JaiHarsan" class="contributor-link" target="_blank">@JaiHarsan</a>
                 </li>
                 <li>
                     <span class="contributor-name">SamXop123</span>
@@ -230,10 +245,6 @@
                     <a href="https://github.com/Pranavkale11" class="contributor-link" target="_blank">@Pranavkale11</a>
                 </li>
                 <li>
-                    <span class="contributor-name">Sargam-Ghagre</span>
-                    <a href="https://github.com/Sargam-Ghagre" class="contributor-link" target="_blank">@Sargam-Ghagre</a>
-                </li>
-                <li>
                     <span class="contributor-name">ShaikhWarsi</span>
                     <a href="https://github.com/ShaikhWarsi" class="contributor-link" target="_blank">@ShaikhWarsi</a>
                 </li>
@@ -242,76 +253,96 @@
                     <a href="https://github.com/SuyashSoni10" class="contributor-link" target="_blank">@SuyashSoni10</a>
                 </li>
                 <li>
-                    <span class="contributor-name">Aharshi3614</span>
-                    <a href="https://github.com/Aharshi3614" class="contributor-link" target="_blank">@Aharshi3614</a>
-                </li>
-                <li>
-                    <span class="contributor-name">dishant62</span>
-                    <a href="https://github.com/dishant62" class="contributor-link" target="_blank">@dishant62</a>
-                </li>
-                <li>
-                    <span class="contributor-name">nikhil1205-ai</span>
-                    <a href="https://github.com/nikhil1205-ai" class="contributor-link" target="_blank">@nikhil1205-ai</a>
-                </li>
-                <li>
-                    <span class="contributor-name">VedanshN</span>
-                    <a href="https://github.com/VedanshN" class="contributor-link" target="_blank">@VedanshN</a>
+                    <span class="contributor-name">stargalax</span>
+                    <a href="https://github.com/stargalax" class="contributor-link" target="_blank">@stargalax</a>
                 </li>
                 <li>
                     <span class="contributor-name">shreyagupta2006</span>
                     <a href="https://github.com/shreyagupta2006" class="contributor-link" target="_blank">@shreyagupta2006</a>
                 </li>
                 <li>
-                    <span class="contributor-name">androidvitb</span>
-                    <a href="https://github.com/androidvitb" class="contributor-link" target="_blank">@androidvitb</a>
-                </li>
-                <li>
-                    <span class="contributor-name">anshul-lh44</span>
-                    <a href="https://github.com/anshul-lh44" class="contributor-link" target="_blank">@anshul-lh44</a>
-                </li>
-                <li>
-                    <span class="contributor-name">CharlapallyDivyani</span>
-                    <a href="https://github.com/CharlapallyDivyani" class="contributor-link" target="_blank">@CharlapallyDivyani</a>
-                </li>
-                <li>
-                    <span class="contributor-name">Laasya2007</span>
-                    <a href="https://github.com/Laasya2007" class="contributor-link" target="_blank">@Laasya2007</a>
-                </li>
-                <li>
-                    <span class="contributor-name">PulkitSachdev25</span>
-                    <a href="https://github.com/PulkitSachdev25" class="contributor-link" target="_blank">@PulkitSachdev25</a>
-                </li>
-                <li>
-                    <span class="contributor-name">Shlok-Dwivedi</span>
-                    <a href="https://github.com/Shlok-Dwivedi" class="contributor-link" target="_blank">@Shlok-Dwivedi</a>
-                </li>
-                <li>
-                    <span class="contributor-name">Vanshikaram</span>
-                    <a href="https://github.com/Vanshikaram" class="contributor-link" target="_blank">@Vanshikaram</a>
-                </li>
-                <li>
-                    <span class="contributor-name">vishakhaojha57</span>
-                    <a href="https://github.com/vishakhaojha57" class="contributor-link" target="_blank">@vishakhaojha57</a>
+                    <span class="contributor-name">helen1806</span>
+                    <a href="https://github.com/helen1806" class="contributor-link" target="_blank">@helen1806</a>
                 </li>
                 <li>
                     <span class="contributor-name">architsinghal0005</span>
                     <a href="https://github.com/architsinghal0005" class="contributor-link" target="_blank">@architsinghal0005</a>
                 </li>
                 <li>
-                    <span class="contributor-name">helen1806</span>
-                    <a href="https://github.com/helen1806" class="contributor-link" target="_blank">@helen1806</a>
+                    <span class="contributor-name">VedanshN</span>
+                    <a href="https://github.com/VedanshN" class="contributor-link" target="_blank">@VedanshN</a>
                 </li>
                 <li>
-                    <span class="contributor-name">jahareena-06</span>
-                    <a href="https://github.com/jahareena-06" class="contributor-link" target="_blank">@jahareena-06</a>
+                    <span class="contributor-name">nikhil1205-ai</span>
+                    <a href="https://github.com/nikhil1205-ai" class="contributor-link" target="_blank">@nikhil1205-ai</a>
+                </li>
+                <li>
+                    <span class="contributor-name">dishant62</span>
+                    <a href="https://github.com/dishant62" class="contributor-link" target="_blank">@dishant62</a>
+                </li>
+                <li>
+                    <span class="contributor-name">AshutoshDash1999</span>
+                    <a href="https://github.com/AshutoshDash1999" class="contributor-link" target="_blank">@AshutoshDash1999</a>
+                </li>
+                <li>
+                    <span class="contributor-name">Aharshi3614</span>
+                    <a href="https://github.com/Aharshi3614" class="contributor-link" target="_blank">@Aharshi3614</a>
+                </li>
+                <li>
+                    <span class="contributor-name">yhcb21</span>
+                    <a href="https://github.com/yhcb21" class="contributor-link" target="_blank">@yhcb21</a>
                 </li>
                 <li>
                     <span class="contributor-name">Shweta-Bairagi0312</span>
                     <a href="https://github.com/Shweta-Bairagi0312" class="contributor-link" target="_blank">@Shweta-Bairagi0312</a>
                 </li>
                 <li>
-                    <span class="contributor-name">yhcb21</span>
-                    <a href="https://github.com/yhcb21" class="contributor-link" target="_blank">@yhcb21</a>
+                    <span class="contributor-name">jahareena-06</span>
+                    <a href="https://github.com/jahareena-06" class="contributor-link" target="_blank">@jahareena-06</a>
+                </li>
+                <li>
+                    <span class="contributor-name">vishakhaojha57</span>
+                    <a href="https://github.com/vishakhaojha57" class="contributor-link" target="_blank">@vishakhaojha57</a>
+                </li>
+                <li>
+                    <span class="contributor-name">Vanshikaram</span>
+                    <a href="https://github.com/Vanshikaram" class="contributor-link" target="_blank">@Vanshikaram</a>
+                </li>
+                <li>
+                    <span class="contributor-name">Shlok-Dwivedi</span>
+                    <a href="https://github.com/Shlok-Dwivedi" class="contributor-link" target="_blank">@Shlok-Dwivedi</a>
+                </li>
+                <li>
+                    <span class="contributor-name">StackFox</span>
+                    <a href="https://github.com/StackFox" class="contributor-link" target="_blank">@StackFox</a>
+                </li>
+                <li>
+                    <span class="contributor-name">PulkitSachdev25</span>
+                    <a href="https://github.com/PulkitSachdev25" class="contributor-link" target="_blank">@PulkitSachdev25</a>
+                </li>
+                <li>
+                    <span class="contributor-name">MEHWISH310</span>
+                    <a href="https://github.com/MEHWISH310" class="contributor-link" target="_blank">@MEHWISH310</a>
+                </li>
+                <li>
+                    <span class="contributor-name">Laasya2007</span>
+                    <a href="https://github.com/Laasya2007" class="contributor-link" target="_blank">@Laasya2007</a>
+                </li>
+                <li>
+                    <span class="contributor-name">Gunjan10-droid</span>
+                    <a href="https://github.com/Gunjan10-droid" class="contributor-link" target="_blank">@Gunjan10-droid</a>
+                </li>
+                <li>
+                    <span class="contributor-name">CharlapallyDivyani</span>
+                    <a href="https://github.com/CharlapallyDivyani" class="contributor-link" target="_blank">@CharlapallyDivyani</a>
+                </li>
+                <li>
+                    <span class="contributor-name">anshul-lh44</span>
+                    <a href="https://github.com/anshul-lh44" class="contributor-link" target="_blank">@anshul-lh44</a>
+                </li>
+                <li>
+                    <span class="contributor-name">androidvitb</span>
+                    <a href="https://github.com/androidvitb" class="contributor-link" target="_blank">@androidvitb</a>
                 </li>
 </ul>
         </section>
