@@ -211,6 +211,35 @@
       transition: box-shadow 0.2s ease;
     }
 
+    .search-controls {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .search-controls #toolSearch {
+      flex: 1;
+      margin-bottom: 0;
+    }
+
+    .reset-filters-btn {
+      padding: 12px 16px;
+      font-family: inherit;
+      font-weight: bold;
+      border: 2px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .reset-filters-btn:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+
     #toolCount {
       margin: -10px 0 24px;
       color: var(--muted);
@@ -332,6 +361,16 @@
     }
 
     @media (max-width: 768px) {
+
+      .search-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .reset-filters-btn {
+        width: 100%;
+      }
+
       .container {
         padding: 32px 20px;
       }
@@ -685,8 +724,15 @@
       </aside>
 
       <main>
-        <input type="text" id="toolSearch" placeholder="SEARCH DATABASE BY NAME..." aria-label="Search tools"
-          autofocus />
+        <div class="search-controls">
+          <input type="text" id="toolSearch" placeholder="SEARCH DATABASE BY NAME..." aria-label="Search tools"
+            autofocus />
+
+          <button id="resetFiltersBtn" class="reset-filters-btn" hidden>
+            Reset Filters
+          </button>
+        </div>
+
         <p id="toolCount" role="status" aria-live="polite"></p>
 
         <div class="tools-grid" id="tools-container">
@@ -991,9 +1037,9 @@
         tags: ["Dev", "DevOps"],
       },
       {
-          name: "Tool Health Checker",
-          path: "tools/health-checker/health-checker.html",
-          tags: ["Maintenance", "Utilities"],
+        name: "Tool Health Checker",
+        path: "tools/health-checker/health-checker.html",
+        tags: ["Maintenance", "Utilities"],
       },
     ];
 
@@ -1023,6 +1069,13 @@
         };
         tagBox.appendChild(btn);
       });
+    }
+
+    function updateResetButton() {
+      const query = document.getElementById("toolSearch").value.trim();
+      const resetBtn = document.getElementById("resetFiltersBtn");
+
+      resetBtn.hidden = !(query || activeTag !== "all");
     }
 
     function renderTools() {
@@ -1058,7 +1111,12 @@
       }
 
       if (filtered.length === 0) {
-        container.innerHTML = `<p style="grid-column: 1/-1; opacity: 0.5;">No tools found matching your criteria.</p>`;
+        container.innerHTML =
+          `<p style="grid-column:1/-1;opacity:.5;">
+        No tools found matching your criteria.
+      </p>`;
+
+        updateResetButton();
         return;
       }
 
@@ -1074,9 +1132,24 @@
     `
         )
         .join("");
+      updateResetButton();
     }
 
-    document.getElementById("toolSearch").oninput = renderTools;
+    document
+      .getElementById("toolSearch")
+      .addEventListener("input", renderTools);
+
+    document
+      .getElementById("resetFiltersBtn")
+      .addEventListener("click", () => {
+
+        document.getElementById("toolSearch").value = "";
+
+        activeTag = "all";
+
+        renderTags();
+        renderTools();
+      });
 
     // Initial Execution
     renderTags();
@@ -1091,10 +1164,13 @@
       installBtn.style.display = "block";
     });
 
-    installBtn.addEventListener("click", (e) => {
+    installBtn.addEventListener("click", () => {
+      if (!deferredPrompt) return;
+
       installBtn.style.display = "none";
       deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) => {
+
+      deferredPrompt.userChoice.then(() => {
         deferredPrompt = null;
       });
     });
@@ -1130,49 +1206,38 @@
     }
   </script>
   <script src="./theme.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', async () => {
+        try {
+          const registration = await navigator.serviceWorker.register('./sw.js');
+
+          registration.addEventListener('updatefound', () => {
+            const newWorker = registration.installing;
+
+            if (!newWorker) return;
+
+            newWorker.addEventListener('statechange', () => {
+              if (
+                newWorker.state === 'installed' &&
+                navigator.serviceWorker.controller
+              ) {
+                const shouldRefresh = confirm(
+                  'A new version of Project Toolsuite is available. Refresh now?'
+                );
+
+                if (shouldRefresh) {
+                  window.location.reload();
+                }
+              }
+            });
+          });
+        } catch (error) {
+          console.error('Service Worker registration failed:', error);
+        }
+      });
+    }
+  </script>
 </body>
 
-  });
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initSpinner);
-} else {
-  initSpinner();
-}
-    </script>
-    <script src="./theme.js"></script>
-    <script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', async () => {
-    try {
-      const registration = await navigator.serviceWorker.register('./sw.js');
-
-      registration.addEventListener('updatefound', () => {
-        const newWorker = registration.installing;
-
-        if (!newWorker) return;
-
-        newWorker.addEventListener('statechange', () => {
-          if (
-            newWorker.state === 'installed' &&
-            navigator.serviceWorker.controller
-          ) {
-            const shouldRefresh = confirm(
-              'A new version of Project Toolsuite is available. Refresh now?'
-            );
-
-            if (shouldRefresh) {
-              window.location.reload();
-            }
-          }
-        });
-      });
-    } catch (error) {
-      console.error('Service Worker registration failed:', error);
-    }
-  });
-}
-</script>
-  </body>
 </html>
