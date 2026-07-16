@@ -64,42 +64,37 @@ toggleSelection(shape) {
             : null;
 }
 
-resetGeometry() {
-    if (this.selectedShapes.length !== 1) {
+duplicateSelected() {
+    if (this.selectedShapes.length === 0) {
         return;
     }
 
-    const shape = this.selectedShapes[0];
-
     this.saveState();
 
-    if (
-        ['rect', 'oval', 'diamond', 'parallelogram']
-            .includes(shape.type)
-    ) {
-        shape.x = 0;
-        shape.y = 0;
-        shape.w = 100;
-        shape.h = 100;
-    }
+    const offset = 20;
 
-    else if (shape.type === 'circle') {
-        shape.x = 0;
-        shape.y = 0;
-        shape.r = 50;
-    }
+    const duplicatedShapes = this.selectedShapes.map(shape => {
+        const duplicate = JSON.parse(
+            JSON.stringify(shape)
+        );
 
-    else if (['line', 'arrow'].includes(shape.type)) {
-        shape.x = 0;
-        shape.y = 0;
-        shape.ex = 100;
-        shape.ey = 100;
-    }
+        duplicate.x += offset;
+        duplicate.y += offset;
 
-    else if (shape.type === 'text') {
-        shape.x = 0;
-        shape.y = 0;
-    }
+        if (['line', 'arrow'].includes(duplicate.type)) {
+            duplicate.ex += offset;
+            duplicate.ey += offset;
+        }
+
+        return duplicate;
+    });
+
+    this.shapes.push(...duplicatedShapes);
+
+    this.selectedShapes = duplicatedShapes;
+
+    this.selection =
+        duplicatedShapes[duplicatedShapes.length - 1];
 
     this.saveToLocalStorage();
     this.updatePropsUI();
