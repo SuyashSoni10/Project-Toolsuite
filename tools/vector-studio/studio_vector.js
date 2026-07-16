@@ -768,6 +768,18 @@ this.selectedShapes.forEach(shape => {
         );
     }
 
+    html += `
+    <button
+        type="button"
+        class="reset-geometry-button btn"
+         style="margin-top:20px; border-color:#44ffca; color:#44ffca;"
+        onclick="app.resetGeometry()"
+    >
+        Reset Geometry
+    </button>
+`;
+
+
     geometryPanel.innerHTML = html;
 
     this.attachGeometryListeners();
