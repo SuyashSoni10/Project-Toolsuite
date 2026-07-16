@@ -34,6 +34,47 @@ this.selectedShapes = [];
         console.log(">> VECTOR ENGINE INITIALIZED");
     }
 
+    resetGeometry() {
+    if (this.selectedShapes.length !== 1) {
+        return;
+    }
+
+    const shape = this.selectedShapes[0];
+
+    this.saveState();
+
+    if (
+        ['rect', 'oval', 'diamond', 'parallelogram']
+            .includes(shape.type)
+    ) {
+        shape.x = 0;
+        shape.y = 0;
+        shape.w = 100;
+        shape.h = 100;
+    }
+
+    else if (shape.type === 'circle') {
+        shape.x = 0;
+        shape.y = 0;
+        shape.r = 50;
+    }
+
+    else if (['line', 'arrow'].includes(shape.type)) {
+        shape.x = 0;
+        shape.y = 0;
+        shape.ex = 100;
+        shape.ey = 100;
+    }
+
+    else if (shape.type === 'text') {
+        shape.x = 0;
+        shape.y = 0;
+    }
+
+    this.saveToLocalStorage();
+    this.updatePropsUI();
+}
+
 isSelected(shape) {
     return this.selectedShapes.includes(shape);
 }
