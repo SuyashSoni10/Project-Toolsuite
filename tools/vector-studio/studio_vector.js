@@ -64,6 +64,47 @@ toggleSelection(shape) {
             : null;
 }
 
+resetGeometry() {
+    if (this.selectedShapes.length !== 1) {
+        return;
+    }
+
+    const shape = this.selectedShapes[0];
+
+    this.saveState();
+
+    if (
+        ['rect', 'oval', 'diamond', 'parallelogram']
+            .includes(shape.type)
+    ) {
+        shape.x = 0;
+        shape.y = 0;
+        shape.w = 100;
+        shape.h = 100;
+    }
+
+    else if (shape.type === 'circle') {
+        shape.x = 0;
+        shape.y = 0;
+        shape.r = 50;
+    }
+
+    else if (['line', 'arrow'].includes(shape.type)) {
+        shape.x = 0;
+        shape.y = 0;
+        shape.ex = 100;
+        shape.ey = 100;
+    }
+
+    else if (shape.type === 'text') {
+        shape.x = 0;
+        shape.y = 0;
+    }
+
+    this.saveToLocalStorage();
+    this.updatePropsUI();
+}
+
     // --- MATH UTILS ---
 
     snap(val) {
@@ -731,6 +772,18 @@ this.selectedShapes.forEach(shape => {
             'text'
         );
     }
+
+    html += `
+    <button
+        type="button"
+        class="reset-geometry-button btn"
+         style="margin-top:20px; border-color:#44ffca; color:#44ffca;"
+        onclick="app.resetGeometry()"
+    >
+        Reset Geometry
+    </button>
+`;
+
 
     geometryPanel.innerHTML = html;
 
