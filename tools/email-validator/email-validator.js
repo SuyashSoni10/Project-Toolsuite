@@ -120,11 +120,11 @@ function validateEmail() {
     const resultsCard = document.getElementById('resultsCard');
     const typoAction = document.getElementById('typoAction');
     
-    if (!email) {
-        if(window.showNotification) window.showNotification('Please enter an email address.', 'error');
-        return;
-    }
+   if (!email) {
+        alert('No text in the input field.');
     
+    return;
+}
     resultsCard.classList.add('visible');
     typoAction.style.display = 'none';
     typoAction.innerHTML = '';
