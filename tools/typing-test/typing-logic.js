@@ -50,7 +50,7 @@ function initTest() {
     timerDisplay.innerText = "60s";
     speedGauge.style.width = "0%";
     hiddenInput.value = "";
-    
+
     const text = sampleTexts[Math.floor(Math.random() * sampleTexts.length)];
     textDisplay.innerHTML = text.split("").map(c => `<span class="char">${c}</span>`).join("");
     textDisplay.firstChild.classList.add('current');
@@ -59,11 +59,38 @@ function initTest() {
 
 hiddenInput.addEventListener('input', () => {
     const chars = textDisplay.querySelectorAll('.char');
-    const typedChar = hiddenInput.value.split("")[charIndex];
-    
+
     if (!isStarted) { startTimer(); isStarted = true; }
 
-    if (typedChar == null) return; // Ignore backspace for simplicity in this version
+    const inputLen = hiddenInput.value.length;
+
+
+    if (inputLen < charIndex) {
+        while (charIndex > inputLen) {
+            charIndex--;
+
+            if (chars[charIndex].classList.contains('incorrect')) {
+                mistakes--;
+                chars[charIndex].classList.add('was-incorrect');
+            }
+
+            chars[charIndex].classList.remove('correct', 'incorrect');
+
+            if (chars[charIndex + 1]) {
+                chars[charIndex + 1].classList.remove('current');
+            } else {
+                chars[charIndex].classList.remove('current');
+            }
+        }
+
+        chars[charIndex].classList.add('current');
+        calculateStats();
+        return;
+    }
+
+    const typedChar = hiddenInput.value.split("")[charIndex];
+    if (typedChar == null) return;
+
 
     if (typedChar === chars[charIndex].innerText) {
         chars[charIndex].classList.add('correct');
@@ -97,11 +124,11 @@ function calculateStats() {
     const timeElapsed = (60 - timer) || 1;
     const wpm = Math.round(((charIndex - mistakes) / 5) / (timeElapsed / 60));
     const acc = Math.round(((charIndex - mistakes) / charIndex) * 100);
-    
+
     wpmDisplay.innerText = wpm || 0;
     accuracyDisplay.innerText = (acc || 100) + "%";
-    
-    // Update Gauge (Maxes out at 80 WPM visually)
+
+
     const gaugeWidth = Math.min((wpm / 80) * 100, 100);
     speedGauge.style.width = gaugeWidth + "%";
 }
