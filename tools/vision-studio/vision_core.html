@@ -172,14 +172,16 @@
     transform: translateY(0);
 }
 
-     .btn.active {
-    background: var(--accent);
-    color: var(--bg);
-    border-color: var(--accent);
-}
-.btn.active:hover {
-    filter: brightness(1.08);
-}
+        .btn.active {
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+        }
+
+        .btn.active:hover {
+            filter: brightness(1.08);
+        }
+
         #themeBtn {
             top: 20px;
         }
@@ -365,6 +367,21 @@
         .c-sys {
             color: var(--muted);
         }
+
+   .btn-reset {
+    background: transparent;
+    color: #ff6b6b;
+    border: 1px dashed #ff6b6b;
+    letter-spacing: 1px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.btn-reset:hover {
+    background: rgba(255, 107, 107, 0.12);
+    border-style: solid;
+    box-shadow: 0 0 12px rgba(255,107,107,0.35);
+}
     </style>
     <link rel="stylesheet" href="../../theme.css">
 </head>
@@ -799,6 +816,44 @@
                 this.canvas.height = this.image.height;
                 this.canvas.style.width = (this.image.width * scale) + "px";
                 this.canvas.style.height = (this.image.height * scale) + "px";
+            },
+
+            resetEditor: function () {
+
+                // Do nothing if no image is loaded
+                if (!this.image) {
+                    notify.info("Load an image first!");
+                    return;
+                }
+
+                // Reset rotation and zoom values
+                this.params.rot = 0;
+                this.params.crop = 1.0;
+
+                // Reset filter
+                this.currentShader = "normal";
+
+                // Reset rotation slider and label
+                document.getElementById("slider-rot").value = 0;
+                document.getElementById("val-rot").innerText = "0";
+
+                // Reset zoom slider and label
+                document.getElementById("slider-crop").value = 1.0;
+                document.getElementById("val-crop").innerText = "1.0";
+
+                // Remove all stickers
+                stickers.items.forEach(sticker => {
+                    sticker.el.remove();
+                });
+
+                stickers.items = [];
+                stickers.selectedId = null;
+
+                // Re-render image
+                this.render();
+
+                // Log message
+                this.log("Editor reset successfully", "c-gpu");
             },
 
             export: function () {
