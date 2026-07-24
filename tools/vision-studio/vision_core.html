@@ -147,12 +147,30 @@
             transition: all 0.2s ease;
         }
 
+
         .btn:hover {
             border-color: var(--accent);
             background: var(--tag-bg);
             border-color: var(--text);
             transform: translateY(-1px);
         }
+        .btn-export {
+    background: #16a34a;
+    color: #fff;
+    border: 1px solid #16a34a;
+    transition: all 0.2s ease;
+}
+
+.btn-export:hover {
+    background: #15803d;
+    color: #fff;
+    border-color: #15803d;
+    transform: translateY(-1px);
+}
+
+.btn-export:active {
+    transform: translateY(0);
+}
 
         .btn.active {
             background: var(--accent);
@@ -381,11 +399,13 @@
         </div>
         <div class="control-group">
             <div class="group-title">FILE</div>
-            <button class="btn" onclick="document.getElementById('file-input').click()">LOAD IMAGE</button>
-            <button class="btn" onclick="vision.export()">EXPORT COMPOSITE</button>
-           <button class="btn btn-reset" onclick="vision.resetEditor()">
-    ↺ RESET EDITOR
-</button>
+            <button class="btn" onclick="document.getElementById('file-input').click()">
+                📂 LOAD IMAGE
+            </button>
+
+            <button class="btn btn-export" onclick="vision.export()">
+                ⬇ EXPORT COMPOSITE
+            </button>
             <input type="file" id="file-input" accept="image/*" hidden onchange="vision.handleFile(this.files[0])">
         </div>
 
@@ -494,7 +514,14 @@
                 window.addEventListener('mouseup', e => this.onUp(e));
                 window.addEventListener('keydown', e => {
                     if ((e.key === 'Delete' || e.key === 'Backspace') && this.selectedId) {
-                        this.remove(this.selectedId);
+
+                        const shouldDelete = confirm(
+                            "Are you sure you want to delete this sticker?"
+                        );
+
+                        if (shouldDelete) {
+                            this.remove(this.selectedId);
+                        }
                     }
                 });
             },
