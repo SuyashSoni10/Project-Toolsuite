@@ -5,6 +5,10 @@ const output = document.getElementById("output");
 const charCount = document.getElementById("charCount");
 const wordCount = document.getElementById("wordCount");
 
+const LINKEDIN_CHARACTER_LIMIT = 3000;
+const limitWarning = document.getElementById("limitWarning");
+limitWarning.style.display = "none";
+
 let history = [];
 
 const styleNames = {
@@ -97,13 +101,19 @@ function validateInput() {
 function updateCounter() {
   const text = input.value;
 
-  charCount.textContent = text.length;
+ charCount.textContent = text.length;
 
-  const words = text.trim()
-    ? text.trim().split(/\s+/).length
-    : 0;
+const words = text.trim()
+  ? text.trim().split(/\s+/).length
+  : 0;
 
-  wordCount.textContent = words;
+wordCount.textContent = words;
+
+if (text.length > LINKEDIN_CHARACTER_LIMIT) {
+  limitWarning.style.display = 'inline-block';
+} else {
+  limitWarning.style.display = 'none';
+}
 }
 
 input.addEventListener("input", updateCounter);
