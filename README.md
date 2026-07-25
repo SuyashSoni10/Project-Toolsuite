@@ -250,11 +250,11 @@ See the `LICENSE` file for complete details.
 
 | Rank | Contributor | Points | Commits |
 |-----:|------------|-------:|--------:|
-| 1 | @Winter262005 | 349 | 349 |
-| 2 | @love25-codes | 60 | 60 |
-| 3 | @VITianYash42 | 20 | 20 |
-| 4 | @rach-kanc | 16 | 16 |
-| 5 | @Sargam-Ghagre | 15 | 15 |
+| 1 | @Winter262005 | 362 | 362 |
+| 2 | @love25-codes | 66 | 66 |
+| 3 | @Sargam-Ghagre | 20 | 20 |
+| 4 | @VITianYash42 | 20 | 20 |
+| 5 | @rach-kanc | 16 | 16 |
 | 6 | @Ishwarpatra | 14 | 14 |
 | 7 | @Dru-429 | 13 | 13 |
 | 8 | @AdityaMittal08 | 9 | 9 |
