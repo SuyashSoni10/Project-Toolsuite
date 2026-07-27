@@ -106,10 +106,10 @@ toggleSelection(shape) {
 }
 
 duplicateSelected() {
-    if (this.selectedShapes.length === 0) {
-        alert("No shape selected. Please select a shape to duplicate.");
-        return;
-    }
+   if (this.selectedShapes.length === 0) {
+    notify.error("No shape selected. Please select a shape to duplicate.");
+    return;
+}
 
     this.saveState();
 
@@ -893,10 +893,10 @@ this.selectedShapes.forEach(shape => {
     }
 
   deleteSelected() {
-    if (this.selectedShapes.length == 0) {
-        alert("No shape selected. Please select a shape to delete.");
-        return;
-    }
+   if (this.selectedShapes.length === 0) {
+    notify.error("No shape selected. Please select a shape to delete.");
+    return;
+}
 
     this.saveState();
 
