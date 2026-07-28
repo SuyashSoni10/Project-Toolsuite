@@ -207,7 +207,7 @@ document.getElementById("copyBtn").addEventListener("click", async () => {
   }
 
   await navigator.clipboard.writeText(text);
-    notify.success("Copied to clipboard!");
+    notify.success("Output copied to clipboard!");
 });
 
 
@@ -271,6 +271,18 @@ document.getElementById("strikeBtn").addEventListener("click", () => {
 );
 
 restoreInputFocus(start, end);
+});
+
+document.getElementById("copyInputBtn").addEventListener("click", async () => {
+  const text = input.value.trim();
+
+  if (!text) {
+    notify.error("Nothing to copy.");
+    return;
+  }
+
+  await navigator.clipboard.writeText(text);
+  notify.success("Input copied to clipboard!");
 });
 
 
