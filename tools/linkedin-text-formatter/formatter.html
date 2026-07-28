@@ -140,9 +140,23 @@
 
 .history-item textarea {
     min-height: 60px;
-    margin-top: 10px;
     width: 100%;
     resize: vertical;
+}
+
+.history-hint {
+  margin: 5px 0 2px;
+  padding: 10px 12px;
+  border: 3px dashed var(--border);
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  border-radius: 6px;
+}
+
+.history-hint strong {
+  color: var(--text);
 }
 
       @media (max-width: 600px) {
@@ -213,6 +227,11 @@
       <h1>LinkedIn Text Formatter</h1>
       <p>Convert normal text into LinkedIn-friendly bold and italic styles.</p>
       <p>These styles work when copied into LinkedIn, X, Instagram, Threads, Discord, and most modern apps.</p>
+
+      <div class="history-hint">
+  💡 Your last <strong>10 conversions</strong> are automatically saved in the
+  <strong>Recent History</strong> section below.
+</div>
     
         <button class="dark-mode-toggle" onclick="toggleTheme()" id="themeBtn" aria-label="Toggle theme">DARK MODE</button></header>
 
