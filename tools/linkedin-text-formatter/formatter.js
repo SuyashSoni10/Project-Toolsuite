@@ -42,6 +42,15 @@ function addToHistory(inputText, style, outputText) {
     renderHistory();
 }
 
+function escapeHtml(str) {
+  return str.replace(/[&<>]/g, function (m) {
+    if (m === "&") return "&amp;";
+    if (m === "<") return "&lt;";
+    if (m === ">") return "&gt;";
+    return m;
+  });
+}
+
 function renderHistory() {
 
     const container = document.getElementById("historyList");
@@ -57,7 +66,7 @@ function renderHistory() {
     container.innerHTML = history
         .map((item, index) => `
            <div class="history-item">
-    <strong>${item.input}</strong>
+    <strong>${escapeHtml(item.input)}</strong>
 
     <div class="history-style">
         Style: ${item.style}
