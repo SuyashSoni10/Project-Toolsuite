@@ -137,10 +137,10 @@ Role-based Address: ${roleResult}`;
 
    navigator.clipboard.writeText(analysisText)
         .then(() => {
-            alert('Analysis result copied to clipboard successfully.');
+            notify.success('Analysis result copied to clipboard successfully.');
         })
         .catch(() => {
-            alert('Unable to copy analysis result to clipboard.');
+            notify.error('Unable to copy analysis result to clipboard.');
         });
 }
 
@@ -150,7 +150,7 @@ function validateEmail() {
     const typoAction = document.getElementById('typoAction');
     
    if (!email) {
-        alert('No text in the input field.');
+        notify.error('No text in the input field.');
     
     return;
 }
