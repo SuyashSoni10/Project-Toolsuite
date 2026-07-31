@@ -455,7 +455,7 @@
       align-items: center;
       gap: 18px;
     }
-    
+
     footer p {
       margin: 0;
       color: var(--text);
@@ -805,40 +805,33 @@
 
       min-width: 140px;
       padding: 12px 22px;
-
-      background: #E7DDD1;
-      color: #2B2118;
-
+      background: var(--surface);
+      color: var(--text);
+      border: 2px solid var(--border);
+      box-shadow: 4px 4px 0 var(--border);
       text-decoration: none;
       font-weight: 700;
       font-size: 15px;
       letter-spacing: 0.5px;
-
-      border: 2px solid #8B7D70;
       border-radius: 10px;
-
-      box-shadow: 4px 4px 0 #B8AA9C;
       transition: all 0.3s ease;
     }
 
     /* Hover */
     .top-navbar a:hover {
-      background: #d8c7b4;
-      color: #1d1611;
-
-      border-color: #6f6258;
-
+      background: var(--surface-2);
+      color: var(--text);
+      border-color: var(--border);
       transform: translateY(-4px) scale(1.03);
-
-      box-shadow: 8px 8px 0 #9E8F80;
-
+      box-shadow: 8px 8px 0 var(--border);
+      transform: translateY(-4px) scale(1.03);
       cursor: pointer;
     }
 
     /* Active */
     .top-navbar a:active {
       transform: translateY(-1px) scale(0.98);
-      box-shadow: 3px 3px 0 #9E8F80;
+      box-shadow: 3px 3px 0 var(--border);
     }
   </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="e2150d65-a009-409f-b3bd-b11afccb3a13"></script>
