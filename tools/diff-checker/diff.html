@@ -9,14 +9,7 @@
     <meta property="og:description"
         content="Compare text and code differences instantly with a fast browser-based visual diff checker." />
     <link rel="stylesheet" href="../../theme.css">
-    <meta
-    property="og:description"
-    content="Compare text and code differences instantly with a fast browser-based visual diff checker."
-    />
-
-    <meta property="og:description"
-        content="Compare text and code differences instantly with a fast browser-based visual diff checker." />
-
+    <link rel="stylesheet" href="../../assets/css/notifications.css">
     <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/3522/3522262.png" />
 
     <meta property="og:type" content="website" />
@@ -27,75 +20,62 @@
 
     <meta name="twitter:description"
         content="Compare text and code differences instantly with a fast browser-based visual diff checker." />
-    
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <header>
-    <h1>Visual Diff Checker</h1>
+    <header>
+        <h1>Visual Diff Checker</h1>
 
-    <div class="header-actions">
-        <button class="secondary" onclick="clearAll()">
-            Clear All
-        </button>
+        <div class="header-actions">
+            <button class="secondary" onclick="clearAll()">
+                Clear All
+            </button>
 
-        <button
-            class="dark-mode-toggle"
-            onclick="toggleTheme()"
-            id="themeBtn"
-            aria-label="Toggle theme">
-            DARK MODE
-        </button>
-    </div>
-</header>
+            <button class="dark-mode-toggle" onclick="toggleTheme()" id="themeBtn" aria-label="Toggle theme">
+                DARK MODE
+            </button>
+        </div>
+    </header>
 
     <div class="input-container">
-       <div class="input-box">
-    <div class="label-row">
-        <label for="original">Original Text</label>
-        <button
-            type="button"
-            class="sample-button"
-            onclick="loadSample('original')">
-            Load Sample
-        </button>
+        <div class="input-box">
+            <div class="label-row">
+                <label for="original">Original Text</label>
+                <button type="button" class="sample-button" onclick="loadSample('original')">
+                    Load Sample
+                </button>
+            </div>
+
+            <textarea id="original" placeholder="Paste original code/text here..."></textarea>
+        </div>
+
+        <div class="input-box">
+            <div class="label-row">
+                <label for="modified">Modified Text</label>
+                <button type="button" class="sample-button" onclick="loadSample('modified')">
+                    Load Sample
+                </button>
+            </div>
+
+            <textarea id="modified" placeholder="Paste modified code/text here..."></textarea>
+        </div>
     </div>
-
-    <textarea
-        id="original"
-        placeholder="Paste original code/text here..."></textarea>
-</div>
-
-<div class="input-box">
-    <div class="label-row">
-        <label for="modified">Modified Text</label>
-        <button
-            type="button"
-            class="sample-button"
-            onclick="loadSample('modified')">
-            Load Sample
-        </button>
-    </div>
-
-    <textarea
-        id="modified"
-        placeholder="Paste modified code/text here..."></textarea>
-</div>
-    </div>
-
-</div>
 
     <div class="controls">
         <button onclick="compareText()">🔍 Compare Differences</button>
     </div>
 
     <div class="diff-output" id="output">
-        <div style="padding: 20px; color: var(--muted); text-align: center;">Result will appear here...</div>
+        <div class="diff-placeholder">
+            Result will appear here...
+        </div>
     </div>
     <footer>
         <a href="../../index.html">&larr; Back to Home</a>
     </footer>
+    <script src="../../assets/js/notifications.js" defer></script>
     <script src="diff-logic.js"></script>
     <script src="../../theme.js"></script>
 </body>
