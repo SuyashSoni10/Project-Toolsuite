@@ -144,6 +144,7 @@
     resize: vertical;
 }
 
+
 .history-hint {
   margin: 5px 0 2px;
   padding: 10px 12px;
@@ -157,6 +158,27 @@
 
 .history-hint strong {
   color: var(--text);
+}
+
+
+.limit-warning {
+  display: none;
+
+  margin: 1px 0 10px;
+  padding: 10px 22px;
+
+  border: 2px solid #e6a700;
+  border-left: 6px solid #ff9800;
+  border-radius: 8px;
+
+  background: #fff8e1;
+  color: #8a5a00;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.5;
+
+  box-shadow: 0 2px 6px rgba(52, 45, 45, 0.08);
 }
 
       @media (max-width: 600px) {
@@ -257,6 +279,10 @@
   <span>Characters: <strong id="charCount">0</strong></span>
   <span>Words: <strong id="wordCount">0</strong></span>
 </div>
+
+<p id="limitWarning" class="limit-warning">
+  ⚠ Too Long for LinkedIn
+</p>
 
       <label>Output</label>
       <textarea id="output" placeholder="Formatted text will appear here..." readonly></textarea>
