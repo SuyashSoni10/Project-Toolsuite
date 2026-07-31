@@ -27,6 +27,12 @@
             font-size: 1.5rem;
         }
 
+        .diff-placeholder {
+    padding: 20px;
+    color: var(--muted);
+    text-align: center;
+}
+
         .input-container {
             display: grid;
             grid-template-columns: 1fr 1fr;

@@ -6,10 +6,10 @@ function compareText() {
     const text1 = originalInput.value;
     const text2 = modifiedInput.value;
 
-    if (!text1 && !text2) {
-        outputDiv.innerHTML = '<div style="padding: 20px; color: #666; text-align: center;">Please enter text to compare.</div>';
-        return;
-    }
+ if (!text1 && !text2) {
+    notify.error("Please enter text to compare.");
+    return;
+}
 
     const lines1 = text1.split('\n');
     const lines2 = text2.split('\n');
@@ -19,6 +19,7 @@ function compareText() {
     const diffData = backtrackDiff(matrix, lines1, lines2);
 
     renderDiff(diffData);
+    notify.success("Comparison completed.");
 }
 
 // 1. Compute LCS Matrix (Dynamic Programming)
@@ -110,7 +111,11 @@ function escapeHtml(text) {
 function clearAll() {
     originalInput.value = '';
     modifiedInput.value = '';
-    outputDiv.innerHTML = '<div style="padding: 20px; color: #666; text-align: center;">Result will appear here...</div>';
+
+    outputDiv.innerHTML =
+        '<div class="diff-placeholder">Result will appear here...</div>';
+
+    notify.info("Inputs cleared.");
 }
 
 function loadSample(inputId) {
