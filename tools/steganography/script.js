@@ -106,7 +106,6 @@ encodeBtn.addEventListener('click', async () => {
 decodeBtn.addEventListener('click', async () => {
 
     const fileInput = document.getElementById('stegoImage');
-    const password = document.getElementById('decPassword').value;
 
     if (!fileInput.files[0]) {
 
@@ -118,6 +117,22 @@ decodeBtn.addEventListener('click', async () => {
 
         return;
     }
+
+
+    const LARGE_FILE_SIZE = 3 * 1024 * 1024;
+
+    if (fileInput.files[0].size > LARGE_FILE_SIZE) {
+
+        const proceed = confirm(
+            "This image is large and decoding may take a while. Continue?"
+        );
+
+        if (!proceed) {
+            return;
+        }
+    }
+    const password = document.getElementById('decPassword').value;
+
 
     setStatus("Scanning pixels...", "blue");
 
@@ -249,6 +264,8 @@ function revealData() {
     const markerBytes =
         new TextEncoder().encode(END_MARKER);
 
+ 
+
     for (let i = 0; i < data.length; i += 4) {
 
         for (let j = 0; j < 3; j++) {
@@ -261,48 +278,39 @@ function revealData() {
 
             if (bitCount === 8) {
 
-                bytes.push(currentByte);
+
+                bytes.push(decodedByte);
 
                 currentByte = 0;
-
                 bitCount = 0;
 
                 // Check marker
                 if (bytes.length >= markerBytes.length) {
 
-                    let found = true;
+    let found = true;
 
-                    for (
-                        let k = 0;
-                        k < markerBytes.length;
-                        k++
-                    ) {
+    const start = bytes.length - markerBytes.length;
 
-                        if (
-                            bytes[
-                                bytes.length -
-                                markerBytes.length +
-                                k
-                            ] !== markerBytes[k]
-                        ) {
-                            found = false;
-                            break;
-                        }
-                    }
+    for (let k = 0; k < markerBytes.length; k++) {
 
-                    if (found) {
+        if (bytes[start + k] !== markerBytes[k]) {
+            found = false;
+            break;
+        }
+    }
 
-                        const finalBytes =
-                            bytes.slice(
-                                0,
-                                -markerBytes.length
-                            );
+    if (found) {
 
-                        return new TextDecoder().decode(
-                            new Uint8Array(finalBytes)
-                        );
-                    }
-                }
+        const finalBytes = bytes.slice(
+            0,
+            -markerBytes.length
+        );
+
+        return new TextDecoder().decode(
+            new Uint8Array(finalBytes)
+        );
+    }
+}
             }
         }
     }
