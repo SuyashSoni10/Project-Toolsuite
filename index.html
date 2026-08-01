@@ -136,12 +136,15 @@
       transform: translate(-2px, -2px);
       box-shadow: 4px 4px 0px var(--border);
     }
+.workspace {
+    display: grid;
+    gap: 40px;
 
-    .workspace {
-      display: grid;
-      grid-template-columns: 220px 1fr 280px;
-      gap: 40px;
-    }
+    grid-template-columns: 220px 1fr 280px;
+
+    grid-template-areas:
+        "tags tools recent";
+}
 
     aside h3 {
       font-size: 0.8rem;
@@ -493,10 +496,17 @@
       box-shadow: 6px 6px 0 var(--border);
     }
 
-    @media (max-width: 850px) {
-      .workspace {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 800px) {
+      .workspace{
+
+    grid-template-columns:1fr;
+
+    grid-template-areas:
+
+        "tools"
+        "tags"
+        "recent";
+}
 
       .tag-list {
         display: flex;
@@ -598,10 +608,9 @@
         width: 90%;
       }
 
-      .workspace {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
+      .workspace{
+        gap:20px;
+     }
 
       .tag-list {
         display: flex;
@@ -833,6 +842,32 @@
       transform: translateY(-1px) scale(0.98);
       box-shadow: 3px 3px 0 var(--border);
     }
+
+    .workspace > aside:first-child {
+    grid-area: tags;
+}
+
+.workspace > main {
+    grid-area: tools;
+}
+
+.workspace > aside:last-child {
+    grid-area: recent;
+}
+
+@media (max-width:1024px){
+
+    .workspace{
+
+        grid-template-columns:220px 1fr;
+
+        grid-template-areas:
+
+            "tags tools"
+            "recent recent";
+    }
+
+}
   </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="e2150d65-a009-409f-b3bd-b11afccb3a13"></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6760380500809289"
