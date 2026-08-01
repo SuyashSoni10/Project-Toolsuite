@@ -1610,6 +1610,14 @@
       window.addEventListener('load', async () => {
         try {
           const registration = await navigator.serviceWorker.register('./sw.js');
+          await navigator.serviceWorker.ready;
+
+if (navigator.serviceWorker.controller) {
+  navigator.serviceWorker.controller.postMessage({
+    type: "PREFETCH_TOOLS",
+    urls: tools.map(tool => tool.path)
+  });
+}
 
           registration.addEventListener('updatefound', () => {
             const newWorker = registration.installing;

@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v4';
+const CACHE_VERSION = 'v5';
 
 const CACHE_NAME = `toolsuite-${CACHE_VERSION}-core`;
 const DYNAMIC_CACHE = `toolsuite-${CACHE_VERSION}-dynamic`;
@@ -21,6 +21,29 @@ const ASSETS_TO_CACHE = [
     './sitemap.xml'
 ];
 
+async function prefetchTools(urls) {
+    const cache = await caches.open(DYNAMIC_CACHE);
+    console.log("[SW] Prefetching", urls.length, "tools");
+
+    for (const url of urls) {
+        console.log("[SW] Cached:", url);
+        try {
+            const cached = await cache.match(url);
+
+            if (!cached) {
+                const response = await fetch(url);
+
+                if (response.ok) {
+                    await cache.put(url, response.clone());
+                    console.log("[SW] Cached:", url);
+                }
+            }
+        } catch (err) {
+            console.warn("[SW] Failed to prefetch:", url);
+        }
+    }
+}
+
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
@@ -29,7 +52,7 @@ self.addEventListener('install', (event) => {
         })
     );
     // Force the waiting service worker to become the active service worker.
-    self.skipWaiting(); 
+    self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
@@ -46,6 +69,14 @@ self.addEventListener('activate', (event) => {
     );
     // Ensure that updates to the service worker take effect immediately
     return self.clients.claim();
+});
+
+self.addEventListener("message", (event) => {
+    if (event.data?.type !== "PREFETCH_TOOLS") {
+        return;
+    }
+
+    event.waitUntil(prefetchTools(event.data.urls));
 });
 
 self.addEventListener('fetch', (event) => {
@@ -94,3 +125,4 @@ self.addEventListener('fetch', (event) => {
         })
     );
 });
+
