@@ -46,18 +46,52 @@ function analyze() {
 
 function updateDisplay(val, entropy, pool, issues) {
     // UI Colors based on Entropy
-    let color = "#ff4d4d";
-    let status = "CRITICAL";
-    
-    if (entropy > 40) { color = "#ffa64d"; status = "WEAK"; }
-    if (entropy > 60) { color = "#ffff4d"; status = "FAIR"; }
-    if (entropy > 80) { color = "#4dff4d"; status = "STRONG"; }
-    if (entropy > 110) { color = "#00ffff"; status = "ELITE"; }
+    // UI state based on Entropy
+let color = "var(--status-critical)";
+let status = "CRITICAL";
+let statusClass = "status-critical";
+
+if (entropy > 40) {
+    color = "var(--status-weak)";
+    status = "WEAK";
+    statusClass = "status-weak";
+}
+
+if (entropy > 60) {
+    color = "var(--status-fair)";
+    status = "FAIR";
+    statusClass = "status-fair";
+}
+
+if (entropy > 80) {
+    color = "var(--status-strong)";
+    status = "STRONG";
+    statusClass = "status-strong";
+}
+
+if (entropy > 110) {
+    color = "var(--status-elite)";
+    status = "ELITE";
+    statusClass = "status-elite";
+}
 
     meterBar.style.width = Math.min(entropy, 100) + "%";
-    meterBar.style.backgroundColor = color;
-    statusText.innerText = `STATUS: ${status}`;
-    statusText.style.color = color === "#ffff4d" ? "#000" : color;
+meterBar.style.backgroundColor = color;
+
+statusText.innerText = `STATUS: ${status}`;
+
+// Remove any previous status class
+statusText.classList.remove(
+    "status-critical",
+    "status-weak",
+    "status-fair",
+    "status-strong",
+    "status-elite"
+);
+
+// Apply the new one
+statusText.classList.add(statusClass);
+statusText.style.color = color;
 
     entropyVal.innerText = Math.floor(entropy) + " bits";
     poolVal.innerText = pool;
@@ -65,7 +99,14 @@ function updateDisplay(val, entropy, pool, issues) {
     // Crack Time: Assumes 100 Trillion guesses/sec (Modern GPU Cluster)
     const seconds = Math.pow(2, entropy) / 1e14;
     timeVal.innerText = formatTime(seconds);
-    timeVal.style.color = entropy < 60 ? "#d00" : "#000";
+    
+    timeVal.classList.remove("time-danger", "time-safe");
+
+if (entropy < 60) {
+    timeVal.classList.add("time-danger");
+} else {
+    timeVal.classList.add("time-safe");
+}
 
     vulnsDiv.innerHTML = issues.length ? 
         issues.map(i => `<div class="issue">${i}</div>`).join('') : 
@@ -84,9 +125,26 @@ function formatTime(s) {
 
 function reset() {
     meterBar.style.width = "0%";
+    meterBar.style.backgroundColor = "";
+
     statusText.innerText = "STATUS: WAITING";
+
+    statusText.classList.remove(
+        "status-critical",
+        "status-weak",
+        "status-fair",
+        "status-strong",
+        "status-elite"
+    );
+
+    statusText.style.color = "";
+
     entropyVal.innerText = "0 bits";
     poolVal.innerText = "0";
+
     timeVal.innerText = "Instant";
+    timeVal.classList.remove("time-danger", "time-safe");
+    timeVal.style.color = "";
+
     vulnsDiv.innerHTML = "No patterns detected.";
 }
