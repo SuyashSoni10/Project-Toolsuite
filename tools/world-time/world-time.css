@@ -28,7 +28,7 @@ body {
 
 /* PLACEHOLDER FIX */
 input::placeholder {
-  color: gray;
+  color: var(--text);
 }
 
 /* CLOCK CARD TEXT FIX */
@@ -112,7 +112,7 @@ header {
 
   transform: translateY(-2px);
 
-  box-shadow: 0 0 15px rgba(96, 165, 250, 0.4);
+ box-shadow: 3px 3px 0 var(--border);
 }
 
 /* TITLE */
@@ -171,7 +171,7 @@ header {
 
   transform: translateY(-2px);
 
-  box-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
+  box-shadow: 3px 3px 0 var(--border);
 }
 
 .action-btn:active {
@@ -249,9 +249,9 @@ main {
 
   background: var(--surface-2);
 
-  box-shadow: var(--shadow);
+  box-shadow: 3px 3px 0 var(--border);
 
-  border-radius: 18px;
+  border-radius: 0;
 }
 
 .hero h2 {
@@ -408,7 +408,7 @@ main {
 
   padding: 25px;
 
-  border-radius: 14px;
+  border-radius: 0;
 
   transition: 0.25s;
 }
@@ -418,7 +418,7 @@ main {
 
   border-color: var(--card-hover);
 
-  box-shadow: 0 0 25px rgba(96, 165, 250, 0.4);
+  box-shadow: 3px 3px 0 var(--border);
 }
 
 .clock-card h4 {
@@ -465,7 +465,7 @@ select {
 
   border: 2px solid var(--border);
 
-  border-radius: 8px;
+  border-radius: 4px;
 
   font-family: "Courier New", monospace;
 
@@ -484,7 +484,7 @@ input:focus {
 
   border-color: var(--card-hover);
 
-  box-shadow: 0 0 12px rgba(96, 165, 250, 0.25);
+  box-shadow: 3px 3px 0 var(--border);
 }
 
 /* dropdown options */
@@ -518,7 +518,7 @@ select:focus {
 
   color: var(--card-hover);
 
-  border-radius: 10px;
+  border-radius: 0;
 }
 
 /* ================= DEV BUTTONS ================= */
@@ -602,7 +602,7 @@ select {
 
   padding: 12px;
 
-  border-radius: 8px;
+  border-radius: 4px;
 
   font-family: inherit;
 }
@@ -627,7 +627,7 @@ select option {
 
   cursor: pointer;
 
-  border-radius: 8px;
+  border-radius: 0;
 }
 
 .convert-btn:hover {
@@ -653,7 +653,7 @@ input[type="date"] {
 
   padding: 12px;
 
-  border-radius: 8px;
+  border-radius: 4px;
 
   font-family: inherit;
 }
@@ -667,14 +667,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 input[type="date"]:hover {
-  box-shadow: 0 0 10px var(--card-hover);
+  box-shadow: 3px 3px 0 var(--border);
 }
 
 footer {
             margin-top: 60px;
             padding: 30px 20px;
             text-align: center;
-            border-radius: 12px 12px 0 0;
+            border-radius: 0;
         }
 
         footer a {
