@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Layout Generator</title>
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ===========================
+                HEADER
+        ============================ -->
+
+        <header class="header">
+
+    <div class="top-bar">
+
+        <a href="../../index.html" class="home-btn">
+            ← Back to Home
+        </a>
+
+        <button id="themeToggle" class="theme-btn">
+            🌙 Dark Mode
+        </button>
+
+    </div>
+
+    <h1>🎨 CSS Layout Generator</h1>
+
+    <p>
+        Design Flexbox and Grid layouts visually and instantly generate
+        production-ready CSS.
+    </p>
+
+</header>
+
+        <!-- ===========================
+                MAIN CONTENT
+        ============================ -->
+
+        <div class="layout">
+
+            <!-- ===========================
+                    CONTROLS
+            ============================ -->
+
+            <aside class="controls">
+
+                <!-- Layout Mode -->
+
+                <section class="card">
+
+                    <h2>Layout Type</h2>
+
+                    <div class="mode-buttons">
+
+                        <button
+                            id="flexModeBtn"
+                            class="active">
+                            Flexbox
+                        </button>
+
+                        <button
+                            id="gridModeBtn">
+                            Grid
+                        </button>
+
+                    </div>
+
+                </section>
+
+                <!-- Flex Controls -->
+
+                <section
+                    class="card"
+                    id="flexControls">
+
+                    <h2>Flexbox Controls</h2>
+
+                    <label>
+
+                        Direction
+
+                        <select id="flexDirection">
+
+                            <option value="row">Row</option>
+                            <option value="column">Column</option>
+                            <option value="row-reverse">Row Reverse</option>
+                            <option value="column-reverse">Column Reverse</option>
+
+                        </select>
+
+                    </label>
+
+                    <label>
+
+                        Justify Content
+
+                        <select id="justifyContent">
+
+                            <option value="flex-start">flex-start</option>
+                            <option value="center">center</option>
+                            <option value="flex-end">flex-end</option>
+                            <option value="space-between">space-between</option>
+                            <option value="space-around">space-around</option>
+                            <option value="space-evenly">space-evenly</option>
+
+                        </select>
+
+                    </label>
+
+                    <label>
+
+                        Align Items
+
+                        <select id="alignItems">
+
+                            <option value="stretch">stretch</option>
+                            <option value="center">center</option>
+                            <option value="flex-start">flex-start</option>
+                            <option value="flex-end">flex-end</option>
+
+                        </select>
+
+                    </label>
+
+                </section>
+
+                <!-- Grid Controls -->
+
+                <section
+                    class="card hidden"
+                    id="gridControls">
+
+                    <h2>Grid Controls</h2>
+
+                    <label>
+
+                        Columns
+
+                        <input
+                            type="range"
+                            id="gridColumns"
+                            min="1"
+                            max="6"
+                            value="3">
+
+                        <span id="columnValue">
+                            3
+                        </span>
+
+                    </label>
+
+                    <label>
+
+                        Rows
+
+                        <input
+                            type="range"
+                            id="gridRows"
+                            min="1"
+                            max="6"
+                            value="2">
+
+                        <span id="rowValue">
+                            2
+                        </span>
+
+                    </label>
+
+                    <label>
+
+                        Template
+
+                        <select id="templatePreset">
+
+                            <option value="equal">
+                                Equal Columns
+                            </option>
+
+                            <option value="sidebar">
+                                Sidebar
+                            </option>
+
+                            <option value="hero">
+                                Hero Layout
+                            </option>
+
+                        </select>
+
+                    </label>
+
+                </section>
+
+                <!-- Shared Controls -->
+
+                <section class="card">
+
+                    <h2>Spacing</h2>
+
+                    <label>
+
+                        Gap
+
+                        <input
+                            id="gapSlider"
+                            type="range"
+                            min="0"
+                            max="50"
+                            value="20">
+
+                        <span id="gapValue">
+                            20px
+                        </span>
+
+                    </label>
+
+                </section>
+
+            </aside>
+
+            <!-- ===========================
+                    PREVIEW
+            ============================ -->
+
+            <main class="workspace">
+
+                <section class="preview-card">
+
+                    <div
+                        id="preview"
+                        class="preview">
+
+                        <div class="box">1</div>
+                        <div class="box">2</div>
+                        <div class="box">3</div>
+                        <div class="box">4</div>
+                        <div class="box">5</div>
+                        <div class="box">6</div>
+
+                    </div>
+
+                </section>
+
+                <!-- ===========================
+                        GENERATED CODE
+                ============================ -->
+
+                <section class="code-card">
+
+                    <div class="code-header">
+
+                        <h2>Generated CSS</h2>
+
+                        <button
+                            id="copyBtn">
+                            Copy Code
+                        </button>
+
+                    </div>
+
+                    <textarea
+                        id="cssOutput"
+                        readonly></textarea>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

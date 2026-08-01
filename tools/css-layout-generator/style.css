@@ -1,0 +1,367 @@
+/* ==========================
+   GLOBAL
+========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f8f8f8;
+    color: #111;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: #555;
+    font-size: 1rem;
+}
+
+/* ==========================
+   TOP BAR
+========================== */
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.home-btn,
+.theme-btn {
+    padding: 12px 18px;
+    border: 3px solid black;
+    background: white;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.home-btn:hover,
+.theme-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 black;
+}
+
+/* ==========================
+   MAIN LAYOUT
+========================== */
+
+.layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* ==========================
+   SIDEBAR
+========================== */
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ==========================
+   CARDS
+========================== */
+
+.card,
+.preview-card,
+.code-card {
+    background: white;
+    border: 4px solid black;
+    box-shadow: 8px 8px 0 black;
+    padding: 20px;
+}
+
+.card h2,
+.code-card h2 {
+    margin-bottom: 18px;
+    font-size: 1.15rem;
+}
+
+.card label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+    font-weight: bold;
+    gap: 8px;
+}
+
+.card select,
+.card input[type="range"] {
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ==========================
+   MODE BUTTONS
+========================== */
+
+.mode-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.mode-buttons button {
+    flex: 1;
+    padding: 12px;
+    cursor: pointer;
+    border: 3px solid black;
+    background: white;
+    font-weight: bold;
+    transition: 0.15s;
+}
+
+.mode-buttons button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 black;
+}
+
+.mode-buttons button.active {
+    background: #ffd54f;
+}
+
+/* ==========================
+   WORKSPACE
+========================== */
+
+.workspace {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ==========================
+   PREVIEW
+========================== */
+
+.preview {
+    min-height: 460px;
+    border: 4px dashed black;
+    background: #fafafa;
+    padding: 20px;
+}
+
+/* ==========================
+   DUMMY BOXES
+========================== */
+
+.box {
+    width: 90px;
+    height: 90px;
+    border: 3px solid black;
+    background: #6ec6ff;
+    font-size: 1.3rem;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 5px 5px 0 black;
+
+    transition: 0.2s;
+}
+
+.box:nth-child(2) {
+    background: #ffcc80;
+}
+
+.box:nth-child(3) {
+    background: #ce93d8;
+}
+
+.box:nth-child(4) {
+    background: #a5d6a7;
+}
+
+.box:nth-child(5) {
+    background: #ef9a9a;
+}
+
+.box:nth-child(6) {
+    background: #80cbc4;
+}
+
+.box:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0 black;
+}
+
+/* ==========================
+   CODE SECTION
+========================== */
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.code-header button {
+    cursor: pointer;
+    padding: 10px 18px;
+    border: 3px solid black;
+    background: white;
+    font-weight: bold;
+    transition: 0.15s;
+}
+
+.code-header button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 black;
+}
+
+#cssOutput {
+    width: 100%;
+    height: 260px;
+    resize: vertical;
+    padding: 15px;
+    border: 3px solid black;
+    background: #f5f5f5;
+    font-family: Consolas, monospace;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ==========================
+   RANGE VALUE
+========================== */
+
+.card span {
+    margin-top: 4px;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width: 950px) {
+
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .preview {
+        min-height: 360px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 14px;
+    }
+
+    .header h1 {
+        font-size: 1.9rem;
+    }
+
+    .mode-buttons {
+        flex-direction: column;
+    }
+
+    .code-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .box {
+        width: 70px;
+        height: 70px;
+    }
+
+}
+
+/* ==========================
+   DARK MODE
+========================== */
+
+body.dark {
+    background: #1d1d1d;
+    color: white;
+}
+
+body.dark .card,
+body.dark .preview-card,
+body.dark .code-card {
+    background: #2d2d2d;
+    color: white;
+    border-color: white;
+    box-shadow: 8px 8px 0 white;
+}
+
+body.dark .preview {
+    background: #252525;
+    border-color: white;
+}
+
+body.dark #cssOutput {
+    background: #161616;
+    color: white;
+    border-color: white;
+}
+
+body.dark select,
+body.dark input,
+body.dark textarea {
+    background: #202020;
+    color: white;
+    border: 2px solid white;
+}
+
+body.dark .mode-buttons button,
+body.dark .theme-btn,
+body.dark .home-btn,
+body.dark .code-header button {
+    background: #303030;
+    color: white;
+    border-color: white;
+}
+
+body.dark .mode-buttons button.active {
+    background: #ffd54f;
+    color: black;
+}
+
+body.dark .header p,
+body.dark .card span {
+    color: #dddddd;
+}
