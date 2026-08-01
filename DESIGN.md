@@ -10,9 +10,47 @@ Practical reference for contributors building or modifying tools. Follow this to
 
 **Monospace-first.** All body text uses JetBrains Mono. Headings use Space Grotesk. No other font families.
 
-**Privacy-first.** No external JS libraries. No tracking scripts. Google Fonts is the only external CDN dependency.
+**Privacy-first.** No tracking scripts or third-party analytics. The project avoids external JavaScript libraries wherever practical, but certain client-side tools require well-established libraries delivered from trusted CDNs. These libraries run entirely in the browser and do not transmit user data to external services. Google Fonts remains the only font CDN dependency.
 
 **Dual-theme.** Every color value must come from a CSS variable so dark mode works automatically.
+
+---
+
+### External JavaScript Library Policy
+
+Most tools should be implemented using native browser APIs whenever possible.
+
+Some utilities require specialized client-side libraries that would be impractical to replace with vanilla JavaScript. These libraries are approved exceptions to the general guideline because they execute entirely within the user's browser.
+
+Current approved external libraries include:
+
+- pdf-lib (PDF creation and editing)
+- pdf.js (PDF rendering)
+- JSZip (ZIP archive creation and extraction)
+- FileSaver.js (download support)
+- Tesseract.js (OCR)
+- PapaParse (CSV parsing)
+- Pyodide (Python runtime for the Online Compiler)
+
+These libraries must:
+
+- Execute completely client-side.
+- Never upload user files or data to third-party services.
+- Be loaded only from trusted HTTPS CDNs.
+- Be included only by tools that require their functionality.
+
+---
+
+### Adding New External Libraries
+
+Before introducing a new CDN dependency, contributors should ensure that:
+
+- Native browser APIs cannot reasonably provide the required functionality.
+- The library operates entirely client-side.
+- It is distributed from a reputable HTTPS CDN.
+- It respects user privacy and does not collect or transmit user data.
+- It has an active maintenance history and a suitable open-source license.
+- The dependency is documented in this design guide.
 
 ---
 
